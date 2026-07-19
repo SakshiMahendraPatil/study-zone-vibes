@@ -1,24 +1,377 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
+import heroImg from "@/assets/study-room-1.jpg";
+import deskImg from "@/assets/study-room-2.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { property: "og:image", content: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const NAV = [
+  { href: "#vibe", label: "The Vibe" },
+  { href: "#damage", label: "The Damage" },
+  { href: "#reviews", label: "Word on the Street" },
+  { href: "#find", label: "Find Us" },
+];
+
 function Index() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* decorative blobs */}
+      <div className="blob left-[-120px] top-[10%] h-[300px] w-[300px] bg-lavender/60" />
+      <div className="blob right-[-100px] top-[40%] h-[260px] w-[260px] bg-mint/60" style={{ animationDelay: "-4s" }} />
+      <div className="blob left-[20%] bottom-[10%] h-[220px] w-[220px] bg-butter/70" style={{ animationDelay: "-8s" }} />
+
+      {/* NAV */}
+      <header className="relative z-40 mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
+        <a href="#top" className="wobble-hover inline-flex -rotate-2 items-center gap-2 rounded-xl border-[2.5px] border-ink bg-butter px-3 py-1.5 shadow-brutal-sm">
+          <Sparkles className="h-4 w-4" />
+          <span className="font-display text-lg tracking-tight">The Study Room</span>
+        </a>
+        <nav className="hidden items-center gap-7 md:flex">
+          {NAV.map((l) => (
+            <a key={l.href} href={l.href} className="relative font-medium hover:text-tangerine">
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <a href="#damage" className="btn-brutal hidden -rotate-1 md:inline-flex">
+          Save My Seat <ArrowRight className="h-4 w-4" />
+        </a>
+        <button
+          className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2 md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Menu"
+        >
+          <span className="block h-0.5 w-5 bg-ink" />
+          <span className="mt-1 block h-0.5 w-5 bg-ink" />
+          <span className="mt-1 block h-0.5 w-5 bg-ink" />
+        </button>
+      </header>
+      {open && (
+        <div className="relative z-40 mx-5 mb-4 card-brutal p-4 md:hidden">
+          {NAV.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
+          ))}
+          <a href="#damage" onClick={() => setOpen(false)} className="btn-brutal mt-2 w-full">Save My Seat</a>
+        </div>
+      )}
+
+      {/* HERO */}
+      <section id="top" className="relative mx-auto max-w-7xl px-5 pt-6 pb-24 md:pt-14">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div className="relative">
+            <span className="inline-flex -rotate-2 items-center gap-2 rounded-full border-[2px] border-ink bg-lavender px-3 py-1 font-hand text-lg">
+              <span className="inline-block h-2 w-2 rounded-full bg-tangerine" />
+              Kolhapur's quietest corner
+            </span>
+            <h1 className="mt-5 text-5xl leading-[0.95] md:text-7xl">
+              Stop Studying on Your{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">Bed.</span>
+                <span className="absolute inset-x-0 bottom-1 -z-0 h-4 -rotate-1 bg-tangerine/70" />
+              </span>{" "}
+              It's <span className="text-tangerine">Not Working.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-lg text-muted-foreground">
+              Get off the mattress and get into the zone. Pin-drop silence, zero distractions,
+              and your very own permanent desk in the heart of Kolhapur.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#damage" className="btn-brutal !bg-tangerine !text-cream text-base">
+                Claim Your Free Trial <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="tel:08262900150"
+                className="inline-flex items-center gap-2 rounded-xl border-[2.5px] border-ink bg-transparent px-5 py-3 font-bold hover:bg-ink hover:text-cream"
+              >
+                <Phone className="h-4 w-4" /> 082629 00150
+              </a>
+            </div>
+            <div className="mt-8 flex items-center gap-4 font-hand text-xl text-muted-foreground">
+              <span className="text-tangerine">★★★★★</span>
+              <span>4.8 / 5 — students actually like us</span>
+            </div>
+          </div>
+
+          {/* polaroid stack */}
+          <div className="relative mx-auto h-[520px] w-full max-w-lg">
+            <div className="polaroid absolute left-2 top-4 w-[74%] rotate-[-6deg]">
+              <span className="tape-strip left-1/2 top-[-14px] -translate-x-1/2 rotate-[-4deg]" />
+              <img src={heroImg} alt="Silent study hall at EduVision" width={800} height={800} className="aspect-square h-auto w-full object-cover" />
+              <p className="mt-3 text-center font-hand text-2xl">the silent zone ✨</p>
+            </div>
+            <div className="polaroid absolute bottom-0 right-0 w-[62%] rotate-[7deg]">
+              <span className="tape-strip left-[-20px] top-6 rotate-[-30deg]" />
+              <img src={deskImg} alt="Cozy dedicated study desk" width={600} height={600} loading="lazy" className="aspect-square h-auto w-full object-cover" />
+              <p className="mt-3 text-center font-hand text-2xl">your desk — for real</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <div className="relative z-10 border-y-[2.5px] border-ink bg-ink py-4 text-cream">
+        <div className="flex overflow-hidden">
+          <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap font-display text-2xl">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex items-center gap-10">
+                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹600 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
+                  <span key={j} className={j % 2 ? "text-tangerine" : ""}>{t}</span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* THE VIBE */}
+      <section id="vibe" className="relative mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-14 max-w-2xl">
+          <p className="font-hand text-2xl text-tangerine">— the vibe —</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">
+            What you get for<br/> your grind.
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              icon: Volume2,
+              title: "Hush-Hush Zones",
+              body: "A place full of silence and the absolute best ambience to actually get things done.",
+              bg: "bg-butter",
+              rot: "rotate-[-2deg]",
+            },
+            {
+              icon: Sparkles,
+              title: "Vibe Check Passed",
+              body: "Nice environment with super clean, modern interiors. No dust bunnies, promise.",
+              bg: "bg-lavender",
+              rot: "rotate-[1.5deg]",
+            },
+            {
+              icon: Armchair,
+              title: "No More Back Pain",
+              body: "Sitting arrangements that are actually nice and designed for the long grinds.",
+              bg: "bg-mint",
+              rot: "rotate-[-1deg]",
+            },
+          ].map((f) => (
+            <div key={f.title} className={`card-brutal ${f.bg} ${f.rot} wobble-hover p-7`}>
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-[2px] border-ink bg-cream">
+                <f.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-5 text-2xl">{f.title}</h3>
+              <p className="mt-3 text-ink/80">{f.body}</p>
+              <p className="mt-4 font-hand text-xl">✓ verified by real students</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* THE DAMAGE */}
+      <section id="damage" className="relative mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="font-hand text-2xl text-tangerine">— the damage —</p>
+            <h2 className="mt-2 text-5xl md:text-6xl">Two plans.<br/>Zero drama.</h2>
+          </div>
+          <p className="max-w-sm text-muted-foreground">No credit card gymnastics. No hidden charges.
+            Just show up and study.</p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Test Drive */}
+          <div className="card-brutal relative -rotate-1 p-8">
+            <span className="tape-strip left-8 top-[-14px] rotate-[-6deg]" />
+            <p className="font-hand text-2xl">Plan #1</p>
+            <h3 className="mt-1 text-4xl">The Test Drive</h3>
+            <div className="mt-6 flex items-baseline gap-2">
+              <span className="text-6xl font-black">₹0</span>
+              <span className="text-muted-foreground">/ first day</span>
+            </div>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Full access for 1 whole day (6 AM – 12 AM)",
+                "Experience the actual pin-drop silence",
+                "Test the blazing-fast Wi-Fi (no cap)",
+                "No card, no commitment, no catch",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-md border-[2px] border-ink bg-lavender">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="tel:08262900150" className="btn-brutal mt-8 w-full !bg-cream">Claim Free Trial</a>
+          </div>
+
+          {/* Permanent Spot */}
+          <div className="card-brutal relative rotate-1 !bg-ink p-8 text-cream shadow-brutal-lg">
+            <span className="absolute -top-4 right-6 -rotate-6 rounded-full border-[2.5px] border-ink bg-tangerine px-4 py-1 font-display text-sm text-ink shadow-brutal-sm">
+              MOST POPULAR
+            </span>
+            <span className="tape-strip left-8 top-[-14px] rotate-[4deg]" />
+            <p className="font-hand text-2xl text-butter">Plan #2</p>
+            <h3 className="mt-1 text-4xl">Your Permanent Spot</h3>
+            <div className="mt-6 flex items-baseline gap-2">
+              <span className="text-6xl font-black">₹600</span>
+              <span className="text-cream/70">/ month</span>
+            </div>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Your own dedicated, permanent seat",
+                "Full month of unlimited access",
+                "High-speed Wi-Fi (zero buffering tears)",
+                "Same spot every day — feels like home",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-md border-[2px] border-cream bg-tangerine">
+                    <Check className="h-3.5 w-3.5 text-ink" />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="tel:08262900150" className="btn-brutal mt-8 w-full !bg-tangerine !text-ink">
+              Lock In My Seat <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section id="reviews" className="relative mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-14 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-hand text-2xl text-tangerine">— word on the street —</p>
+            <h2 className="mt-2 text-5xl md:text-6xl">Students said<br/>it, not us.</h2>
+          </div>
+          <div className="card-brutal -rotate-2 bg-butter p-5">
+            <div className="flex items-center gap-3">
+              <span className="font-display text-5xl">4.8</span>
+              <div>
+                <div className="font-hand text-2xl text-tangerine">★★★★★</div>
+                <p className="text-sm">Based on 10 Google reviews</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { name: "Aarya", tag: "MPSC aspirant", body: "The place full of silence and ambience is best. Finally getting stuff done.", bg: "bg-lavender", rot: "rotate-[-1.5deg]" },
+            { name: "Rohan", tag: "Engineering", body: "Nice environment and nice interiors. Doesn't feel like a study room, feels like a spot.", bg: "bg-mint", rot: "rotate-[1deg]" },
+            { name: "Sneha", tag: "UPSC", body: "The sitting arrangements are really nice. My back has stopped filing complaints.", bg: "bg-butter", rot: "rotate-[-0.5deg]" },
+          ].map((r) => (
+            <div key={r.name} className={`card-brutal ${r.bg} ${r.rot} relative p-6`}>
+              <div className="absolute -top-3 left-6 h-6 w-6 rotate-45 border-b-[2.5px] border-l-[2.5px] border-ink" />
+              <div className="mb-2 font-hand text-xl text-tangerine">★★★★★</div>
+              <p className="text-lg leading-snug">"{r.body}"</p>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border-[2px] border-ink bg-cream font-display">
+                  {r.name[0]}
+                </div>
+                <div>
+                  <p className="font-bold">{r.name}</p>
+                  <p className="text-sm text-ink/70">{r.tag}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FIND US */}
+      <section id="find" className="relative mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-14">
+          <p className="font-hand text-2xl text-tangerine">— find us —</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">Come say hi.</h2>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-5">
+          <div className="card-brutal -rotate-1 space-y-6 bg-lavender p-8 lg:col-span-2">
+            <div>
+              <div className="mb-2 inline-flex items-center gap-2 font-display text-sm">
+                <MapPin className="h-4 w-4" /> THE SPOT
+              </div>
+              <p className="text-lg leading-snug">
+                Mauli building basement, Maratha Regency, 284, near Tarabai Park Road,
+                opp. Hotel, New Shahupuri, Kolhapur, Maharashtra 416001.
+              </p>
+            </div>
+            <div>
+              <div className="mb-2 inline-flex items-center gap-2 font-display text-sm">
+                <Clock className="h-4 w-4" /> HOURS
+              </div>
+              <p className="text-lg">6:00 AM — 12:00 AM, every day.</p>
+              <span className="mt-3 inline-block -rotate-2 rounded-full border-[2.5px] border-ink bg-tangerine px-3 py-1 font-hand text-lg">
+                🦉 Early birds & night owls welcome
+              </span>
+            </div>
+            <div>
+              <div className="mb-2 inline-flex items-center gap-2 font-display text-sm">
+                <Phone className="h-4 w-4" /> RING US
+              </div>
+              <a href="tel:08262900150" className="text-2xl font-black hover:text-tangerine">
+                082629 00150
+              </a>
+            </div>
+            <div className="flex flex-wrap gap-2 pt-2 text-sm">
+              <span className="rounded-full border-[2px] border-ink bg-cream px-3 py-1"><Wifi className="mr-1 inline h-3 w-3" />Fast Wi-Fi</span>
+              <span className="rounded-full border-[2px] border-ink bg-cream px-3 py-1"><Volume2 className="mr-1 inline h-3 w-3" />Silent zone</span>
+              <span className="rounded-full border-[2px] border-ink bg-cream px-3 py-1"><Star className="mr-1 inline h-3 w-3" />4.8 rated</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-3">
+            <div className="card-brutal rotate-1 overflow-hidden p-2">
+              <iframe
+                title="EduVision Study Room map"
+                src="https://www.google.com/maps?q=Tarabai+Park+Road,+New+Shahupuri,+Kolhapur,+Maharashtra+416001&output=embed"
+                className="h-[420px] w-full rounded-md border-[2px] border-ink"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA STRIP */}
+      <section className="relative mx-auto max-w-7xl px-5 pb-20">
+        <div className="card-brutal relative overflow-hidden bg-tangerine p-10 md:p-14">
+          <div className="blob right-[-60px] top-[-40px] h-40 w-40 bg-butter/70" />
+          <h3 className="max-w-2xl text-4xl md:text-5xl">Okay okay. Enough scrolling.<br/>Come try it. First day's on us.</h3>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href="tel:08262900150" className="btn-brutal !bg-ink !text-cream">
+              <Phone className="h-4 w-4" /> Call 082629 00150
+            </a>
+            <a href="#damage" className="btn-brutal !bg-cream">See The Plans</a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t-[2.5px] border-ink bg-ink px-5 py-10 text-cream">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <p className="font-display text-2xl">EDUVISION STUDY ROOM</p>
+            <p className="text-cream/70">Kolhapur's quietest little corner. © {new Date().getFullYear()}</p>
+          </div>
+          <p className="font-hand text-2xl text-butter">now go study, champ 📚</p>
+        </div>
+      </footer>
     </div>
   );
 }
