@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
-import heroImg from "@/assets/study-room-1.jpg";
-import deskImg from "@/assets/study-room-2.jpg";
+import heroAsset from "@/assets/eduvision-hall.png.asset.json";
+import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
+const heroImg = heroAsset.url;
+const deskImg = deskAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
