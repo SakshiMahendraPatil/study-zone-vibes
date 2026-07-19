@@ -36,7 +36,7 @@ function Index() {
       <header className="relative z-40 mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
         <a href="#top" className="wobble-hover inline-flex -rotate-2 items-center gap-2 rounded-xl border-[2.5px] border-ink bg-butter px-3 py-1.5 shadow-brutal-sm">
           <Sparkles className="h-4 w-4" />
-          <span className="font-display text-lg tracking-tight">The Study Room</span>
+          <span className="font-display text-lg tracking-tight">EduVision Study Room</span>
         </a>
         <nav className="hidden items-center gap-7 md:flex">
           {NAV.map((l) => (
