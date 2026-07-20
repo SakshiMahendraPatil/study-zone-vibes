@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
-import heroAsset from "@/assets/eduvision-hall.png.asset.json";
-import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
-const heroImg = heroAsset.url;
-const deskImg = deskAsset.url;
+import studyRoom1 from "@/assets/study-room-1.jpg";
+import studyRoom2 from "@/assets/study-room-2.jpg";
+import eduvisionDesks from "@/assets/eduvision-desks.webp";
+const heroImg = studyRoom1;
+const deskImg = eduvisionDesks;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,6 +116,16 @@ function Index() {
               <span className="tape-strip left-[-20px] top-6 rotate-[-30deg]" />
               <img src={deskImg} alt="Cozy dedicated study desk" width={600} height={600} loading="lazy" className="aspect-square h-auto w-full object-cover" />
               <p className="mt-3 text-center font-hand text-2xl">your desk — for real</p>
+            </div>
+            <div className="polaroid absolute left-0 bottom-4 w-[55%] rotate-[-8deg] z-[-1]">
+              <span className="tape-strip right-[-15px] top-8 rotate-[25deg]" />
+              <img src={studyRoom1} alt="Study room view 1" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
+              <p className="mt-3 text-center font-hand text-xl">study vibes 📚</p>
+            </div>
+            <div className="polaroid absolute right-4 top-20 w-[50%] rotate-[5deg] z-[-1]">
+              <span className="tape-strip left-1/2 top-[-12px] -translate-x-1/2 rotate-[3deg]" />
+              <img src={studyRoom2} alt="Study room view 2" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
+              <p className="mt-3 text-center font-hand text-xl">focus mode 🔥</p>
             </div>
           </div>
         </div>
