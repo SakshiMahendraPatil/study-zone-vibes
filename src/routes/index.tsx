@@ -201,7 +201,112 @@ function Index() {
         </div>
       </section>
 
+      {/* PHOTO TOUR */}
+      <section id="tour" className="relative mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-14 max-w-3xl">
+          <p className="font-hand text-2xl text-tangerine">— photo tour —</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">
+            Proof That We Exist{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">(And are awesome!</span>
+              <span className="absolute inset-x-0 bottom-1 -z-0 h-4 -rotate-1 bg-butter" />
+            </span>{" "}
+            📸
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Ditch the digital renders. Here's a sneak peek inside the real Study Nook.
+            Filter-free, just like our Wi-Fi.
+          </p>
+        </div>
+
+        {/* scrapbook grid */}
+        <div className="relative">
+          {/* doodles */}
+          <Pencil className="absolute -left-2 top-10 h-10 w-10 -rotate-45 text-tangerine/70" strokeWidth={1.6} />
+          <Coffee className="absolute right-4 top-1/3 h-9 w-9 rotate-12 text-ink/60" strokeWidth={1.6} />
+          <Lightbulb className="absolute left-1/2 bottom-4 h-10 w-10 -rotate-6 text-tangerine/80" strokeWidth={1.6} />
+          <span className="absolute right-1/3 top-2 font-hand text-3xl text-tangerine rotate-6">zzz... just kidding, focus!</span>
+
+          <div className="grid auto-rows-[220px] grid-cols-1 gap-8 md:grid-cols-4 md:gap-10">
+            {TOUR.map((p, i) => (
+              <figure
+                key={i}
+                className={`group relative ${p.size} ${p.rot} cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:rotate-0`}
+                onClick={() => setLightbox(i)}
+              >
+                {p.frame === "polaroid" ? (
+                  <div className={`polaroid relative h-full w-full ${p.bg}`}>
+                    <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${p.tape}`} />
+                    <img
+                      src={p.src}
+                      alt={p.caption}
+                      loading="lazy"
+                      className="h-[calc(100%-3.5rem)] w-full object-cover"
+                    />
+                    <figcaption className="mt-2 text-center font-hand text-xl leading-tight">
+                      {p.caption}
+                    </figcaption>
+                  </div>
+                ) : (
+                  <div className="relative h-full w-full">
+                    <div className={`absolute inset-0 -m-2 rounded-[40%_60%_55%_45%/50%_45%_55%_50%] border-[3px] border-ink ${p.bg}`} />
+                    <img
+                      src={p.src}
+                      alt={p.caption}
+                      loading="lazy"
+                      className="blob-mask relative h-full w-full object-cover"
+                    />
+                    <figcaption className="absolute -bottom-10 left-2 right-2 rotate-[-2deg] rounded-lg border-[2px] border-ink bg-cream px-3 py-1 text-center font-hand text-lg shadow-brutal-sm">
+                      {p.caption}
+                    </figcaption>
+                  </div>
+                )}
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        {/* footer CTA */}
+        <div className="mt-24 flex flex-col items-center text-center">
+          <p className="font-hand text-2xl md:text-3xl">
+            Vibe check passed? Let's talk about your new dedicated spot
+          </p>
+          <ArrowDown className="mt-3 h-12 w-12 animate-bounce text-tangerine" strokeWidth={2.5} />
+          <a href="#damage" className="btn-brutal mt-4 !bg-tangerine !text-cream">
+            Show Me The Plans <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* LIGHTBOX */}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/85 p-6 backdrop-blur-sm"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            aria-label="Close"
+            className="absolute right-5 top-5 rounded-full border-[2.5px] border-cream bg-tangerine p-2 text-cream shadow-brutal-sm hover:rotate-6"
+            onClick={() => setLightbox(null)}
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div className="relative max-h-[85vh] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+            <div className="absolute inset-0 -m-3 rounded-[42%_58%_50%_50%/55%_45%_55%_45%] border-[4px] border-cream bg-butter" />
+            <img
+              src={TOUR[lightbox].src}
+              alt={TOUR[lightbox].caption}
+              className="blob-mask relative max-h-[80vh] w-auto object-contain"
+            />
+            <p className="mt-6 text-center font-hand text-2xl text-cream">
+              {TOUR[lightbox].caption}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* THE DAMAGE */}
+
       <section id="damage" className="relative mx-auto max-w-7xl px-5 py-24">
         <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
