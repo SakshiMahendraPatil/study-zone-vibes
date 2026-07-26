@@ -38,6 +38,14 @@ const NAV = [
 
 function Index() {
   const [open, setOpen] = useState(false);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setLightbox(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
