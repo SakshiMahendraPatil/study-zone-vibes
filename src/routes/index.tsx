@@ -1,10 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, ArrowDown, Check, X, Coffee, Lightbulb, Pencil } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
+import tourInterior from "@/assets/tour-interior.jpeg.asset.json";
+import tourDesks from "@/assets/tour-desks.jpeg.asset.json";
+import tourSignage from "@/assets/tour-signage.jpeg.asset.json";
+import tourCubicles from "@/assets/tour-cubicles.jpeg.asset.json";
+import tourHall from "@/assets/tour-hall.jpeg.asset.json";
 const heroImg = heroAsset.url;
 const deskImg = deskAsset.url;
+
+const TOUR = [
+  { src: tourInterior.url, caption: "Your actual corner of paradise. Silence included, free of charge.", bg: "bg-butter", rot: "-rotate-2", tape: "rotate-[-8deg]", size: "md:col-span-2 md:row-span-2", frame: "polaroid" as const },
+  { src: tourCubicles.url, caption: "Your Dedicated Seat. It's waiting for your laptop. And maybe a cheeky coffee ☕️.", bg: "bg-lavender", rot: "rotate-1", tape: "rotate-[6deg]", size: "", frame: "blob" as const },
+  { src: tourDesks.url, caption: "Check that ambience! Bright enough for study, cozy enough to stay sane.", bg: "bg-mint", rot: "-rotate-1", tape: "rotate-[-4deg]", size: "", frame: "polaroid" as const },
+  { src: tourHall.url, caption: "Rows and rows of pure focus fuel. Pick a lane.", bg: "bg-butter", rot: "rotate-2", tape: "rotate-[10deg]", size: "", frame: "blob" as const },
+  { src: tourSignage.url, caption: "The Wi-Fi router (glowing with pure speed ⚡️).", bg: "bg-lavender", rot: "-rotate-2", tape: "rotate-[-6deg]", size: "md:col-span-2", frame: "polaroid" as const },
+];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
