@@ -167,12 +167,3 @@
   animation: marquee 30s linear infinite;
 }
 
-@utility blob-mask {
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M45,-60C56,-49,60,-31,63,-13C66,5,68,23,60,37C51,50,32,58,13,63C-7,68,-27,68,-42,58C-56,49,-64,30,-66,11C-67,-9,-63,-27,-52,-40C-42,-53,-24,-60,-5,-63C13,-66,34,-71,45,-60Z' transform='translate(100 100)' fill='black'/></svg>");
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M45,-60C56,-49,60,-31,63,-13C66,5,68,23,60,37C51,50,32,58,13,63C-7,68,-27,68,-42,58C-56,49,-64,30,-66,11C-67,-9,-63,-27,-52,-40C-42,-53,-24,-60,-5,-63C13,-66,34,-71,45,-60Z' transform='translate(100 100)' fill='black'/></svg>");
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
