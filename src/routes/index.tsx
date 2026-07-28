@@ -431,7 +431,7 @@ function Index() {
             <div className="card-brutal rotate-1 overflow-hidden p-2">
               <iframe
                 title="EduVision Study Room map"
-                src="https://www.google.com/maps?q=Tarabai+Park+Road,+New+Shahupuri,+Kolhapur,+Maharashtra+416001&output=embed"
+                src="https://www.google.com/maps?q=EduVision+Study+Room,+Mauli+building+basement,+Maratha+Regency,+284,+near+Tarabai+Park+Road,+opp.+Hotel,+New+Shahupuri,+Kolhapur,+Maharashtra+416001&output=embed"
                 className="h-[420px] w-full rounded-md border-[2px] border-ink"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
