@@ -464,6 +464,31 @@ function Index() {
           <p className="font-hand text-2xl text-butter">now go study, champ 📚</p>
         </div>
       </footer>
+
+      {/* LIGHTBOX */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            className="absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full border-[2.5px] border-cream bg-tangerine text-ink shadow-brutal"
+            aria-label="Close"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <img
+            src={lightbox}
+            alt="Study room photo"
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[90vh] max-w-[95vw] rounded-lg border-[3px] border-cream object-contain shadow-brutal-lg"
+          />
+        </div>
+      )}
     </div>
   );
 }
