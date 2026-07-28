@@ -149,7 +149,7 @@ function Index() {
           <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap font-display text-2xl">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-10">
-                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹600 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
+                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹550 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
                   <span key={j} className={j % 2 ? "text-tangerine" : ""}>{t}</span>
                 ))}
               </div>
@@ -318,7 +318,7 @@ function Index() {
             <p className="font-hand text-2xl text-butter">Plan #2</p>
             <h3 className="mt-1 text-4xl">Your Permanent Spot</h3>
             <div className="mt-6 flex items-baseline gap-2">
-              <span className="text-6xl font-black">₹600</span>
+              <span className="text-6xl font-black">₹550</span>
               <span className="text-cream/70">/ month</span>
             </div>
             <ul className="mt-6 space-y-3">
