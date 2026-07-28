@@ -1,10 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
+import g1 from "@/assets/gallery-signage.jpeg.asset.json";
+import g2 from "@/assets/gallery-wide.jpeg.asset.json";
+import g3 from "@/assets/gallery-fan.jpeg.asset.json";
+import g4 from "@/assets/gallery-cubicles.jpeg.asset.json";
 const heroImg = heroAsset.url;
 const deskImg = deskAsset.url;
+
+const GALLERY = [
+  { src: g1.url, caption: "Your actual corner of paradise. Silence included, free of charge.", tape: "bg-tangerine/70", rot: "-rotate-2" },
+  { src: g4.url, caption: "Your dedicated seat. Just waiting for your laptop and a mountain of notes.", tape: "bg-mint", rot: "rotate-2" },
+  { src: g2.url, caption: "Check that ambience! Bright enough to study, cozy enough to stay sane.", tape: "bg-lavender", rot: "-rotate-1" },
+  { src: g3.url, caption: "The Wi-Fi router (glowing with pure, uninterrupted speed ⚡️).", tape: "bg-butter", rot: "rotate-1" },
+];
 
 
 export const Route = createFileRoute("/")({
