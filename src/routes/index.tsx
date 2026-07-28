@@ -201,6 +201,73 @@ function Index() {
         </div>
       </section>
 
+      {/* PHOTO GALLERY */}
+      <section id="gallery" className="relative mx-auto max-w-7xl px-5 py-24">
+        {/* decorative background */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="blob left-[5%] top-[15%] h-56 w-56 bg-lavender/50" />
+          <div className="blob right-[8%] top-[50%] h-48 w-48 bg-mint/60" style={{ animationDelay: "-6s" }} />
+          <svg className="absolute left-[12%] top-[8%] h-16 w-16 -rotate-12 text-tangerine/70" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+            <path d="M10 60 Q 25 40, 40 60 T 70 60 T 95 55" strokeLinecap="round" />
+          </svg>
+          <div className="absolute right-[15%] top-[6%] font-hand text-4xl -rotate-6 text-ink/40">click me! →</div>
+          <div className="absolute left-[45%] bottom-[10%] font-hand text-5xl rotate-3 text-tangerine/40">✱</div>
+        </div>
+
+        <div className="mb-14 max-w-3xl">
+          <p className="font-hand text-2xl text-tangerine">— reality check —</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">
+            Peek Inside!{" "}
+            <span className="inline-block rotate-6">📸</span>
+            <span className="inline-block -rotate-6">👀</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+            No digital renders, no fake AI stock photos. Just the actual, real-life
+            pin-drop silence waiting for you.
+          </p>
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-2 lg:gap-14">
+          {GALLERY.map((p, i) => (
+            <figure
+              key={p.src}
+              className={`relative ${i % 2 === 0 ? "md:mt-0" : "md:mt-16"} ${p.rot} wobble-hover`}
+            >
+              {/* doodle behind frame */}
+              {i === 0 && <Coffee className="absolute -left-8 -top-6 h-10 w-10 -rotate-12 text-ink/50" />}
+              {i === 1 && <Pencil className="absolute -right-6 -top-6 h-10 w-10 rotate-45 text-tangerine/70" />}
+              {i === 2 && <Lightbulb className="absolute -left-8 -bottom-4 h-10 w-10 -rotate-12 text-butter" fill="currentColor" />}
+              {i === 3 && <Sparkles className="absolute -right-6 -top-6 h-10 w-10 rotate-12 text-tangerine" />}
+
+              <button
+                type="button"
+                onClick={() => setLightbox(p.src)}
+                className="polaroid group relative block w-full cursor-zoom-in bg-white"
+                aria-label="Open photo"
+              >
+                <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${i % 2 ? "rotate-[3deg]" : "-rotate-[4deg]"} ${p.tape}`} />
+                {/* Image is uncropped: object-contain + natural height */}
+                <img
+                  src={p.src}
+                  alt={p.caption}
+                  loading="lazy"
+                  className="block h-auto max-h-[520px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+                <figcaption className="mt-3 text-center font-hand text-2xl leading-tight text-ink">
+                  {p.caption}
+                </figcaption>
+              </button>
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-16 flex flex-col items-center gap-3 text-center">
+          <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot</p>
+          <a href="#damage" className="font-hand text-5xl animate-bounce">👇</a>
+        </div>
+      </section>
+
+
       {/* THE DAMAGE */}
 
       <section id="damage" className="relative mx-auto max-w-7xl px-5 py-24">
