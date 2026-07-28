@@ -1,10 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
+import g1 from "@/assets/gallery-signage.jpeg.asset.json";
+import g2 from "@/assets/gallery-wide.jpeg.asset.json";
+import g3 from "@/assets/gallery-fan.jpeg.asset.json";
+import g4 from "@/assets/gallery-cubicles.jpeg.asset.json";
 const heroImg = heroAsset.url;
 const deskImg = deskAsset.url;
+
+const GALLERY = [
+  { src: g1.url, caption: "Your actual corner of paradise. Silence included, free of charge.", tape: "bg-tangerine/70", rot: "-rotate-2" },
+  { src: g4.url, caption: "Your dedicated seat. Just waiting for your laptop and a mountain of notes.", tape: "bg-mint", rot: "rotate-2" },
+  { src: g2.url, caption: "Check that ambience! Bright enough to study, cozy enough to stay sane.", tape: "bg-lavender", rot: "-rotate-1" },
+  { src: g3.url, caption: "The Wi-Fi router (glowing with pure, uninterrupted speed ⚡️).", tape: "bg-butter", rot: "rotate-1" },
+];
 
 
 export const Route = createFileRoute("/")({
@@ -18,6 +29,7 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   { href: "#vibe", label: "The Vibe" },
+  { href: "#gallery", label: "Peek Inside" },
   { href: "#damage", label: "The Damage" },
   { href: "#reviews", label: "Word on the Street" },
   { href: "#find", label: "Find Us" },
@@ -25,6 +37,16 @@ const NAV = [
 
 function Index() {
   const [open, setOpen] = useState(false);
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setLightbox(null);
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
+  }, [lightbox]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -179,6 +201,73 @@ function Index() {
           ))}
         </div>
       </section>
+
+      {/* PHOTO GALLERY */}
+      <section id="gallery" className="relative mx-auto max-w-7xl px-5 py-24">
+        {/* decorative background */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="blob left-[5%] top-[15%] h-56 w-56 bg-lavender/50" />
+          <div className="blob right-[8%] top-[50%] h-48 w-48 bg-mint/60" style={{ animationDelay: "-6s" }} />
+          <svg className="absolute left-[12%] top-[8%] h-16 w-16 -rotate-12 text-tangerine/70" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+            <path d="M10 60 Q 25 40, 40 60 T 70 60 T 95 55" strokeLinecap="round" />
+          </svg>
+          <div className="absolute right-[15%] top-[6%] font-hand text-4xl -rotate-6 text-ink/40">click me! →</div>
+          <div className="absolute left-[45%] bottom-[10%] font-hand text-5xl rotate-3 text-tangerine/40">✱</div>
+        </div>
+
+        <div className="mb-14 max-w-3xl">
+          <p className="font-hand text-2xl text-tangerine">— reality check —</p>
+          <h2 className="mt-2 text-5xl md:text-6xl">
+            Peek Inside!{" "}
+            <span className="inline-block rotate-6">📸</span>
+            <span className="inline-block -rotate-6">👀</span>
+          </h2>
+          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+            No digital renders, no fake AI stock photos. Just the actual, real-life
+            pin-drop silence waiting for you.
+          </p>
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-2 lg:gap-14">
+          {GALLERY.map((p, i) => (
+            <figure
+              key={p.src}
+              className={`relative ${i % 2 === 0 ? "md:mt-0" : "md:mt-16"} ${p.rot} wobble-hover`}
+            >
+              {/* doodle behind frame */}
+              {i === 0 && <Coffee className="absolute -left-8 -top-6 h-10 w-10 -rotate-12 text-ink/50" />}
+              {i === 1 && <Pencil className="absolute -right-6 -top-6 h-10 w-10 rotate-45 text-tangerine/70" />}
+              {i === 2 && <Lightbulb className="absolute -left-8 -bottom-4 h-10 w-10 -rotate-12 text-butter" fill="currentColor" />}
+              {i === 3 && <Sparkles className="absolute -right-6 -top-6 h-10 w-10 rotate-12 text-tangerine" />}
+
+              <button
+                type="button"
+                onClick={() => setLightbox(p.src)}
+                className="polaroid group relative block w-full cursor-zoom-in bg-white"
+                aria-label="Open photo"
+              >
+                <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${i % 2 ? "rotate-[3deg]" : "-rotate-[4deg]"} ${p.tape}`} />
+                {/* Image is uncropped: object-contain + natural height */}
+                <img
+                  src={p.src}
+                  alt={p.caption}
+                  loading="lazy"
+                  className="block h-auto max-h-[520px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+                <figcaption className="mt-3 text-center font-hand text-2xl leading-tight text-ink">
+                  {p.caption}
+                </figcaption>
+              </button>
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-16 flex flex-col items-center gap-3 text-center">
+          <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot</p>
+          <a href="#damage" className="font-hand text-5xl animate-bounce">👇</a>
+        </div>
+      </section>
+
 
       {/* THE DAMAGE */}
 
@@ -376,6 +465,31 @@ function Index() {
           <p className="font-hand text-2xl text-butter">now go study, champ 📚</p>
         </div>
       </footer>
+
+      {/* LIGHTBOX */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            className="absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full border-[2.5px] border-cream bg-tangerine text-ink shadow-brutal"
+            aria-label="Close"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <img
+            src={lightbox}
+            alt="Study room photo"
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[90vh] max-w-[95vw] rounded-lg border-[3px] border-cream object-contain shadow-brutal-lg"
+          />
+        </div>
+      )}
     </div>
   );
 }
