@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb } from "lucide-react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, Compass, BookOpen, Globe2, Cog } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
 import g1 from "@/assets/gallery-signage.jpeg.asset.json";
@@ -202,71 +202,126 @@ function Index() {
         </div>
       </section>
 
-      {/* PHOTO GALLERY */}
-      <section id="gallery" className="relative mx-auto max-w-7xl px-5 py-24">
-        {/* decorative background */}
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="blob left-[5%] top-[15%] h-56 w-56 bg-lavender/50" />
-          <div className="blob right-[8%] top-[50%] h-48 w-48 bg-mint/60" style={{ animationDelay: "-6s" }} />
-          <svg className="absolute left-[12%] top-[8%] h-16 w-16 -rotate-12 text-tangerine/70" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
-            <path d="M10 60 Q 25 40, 40 60 T 70 60 T 95 55" strokeLinecap="round" />
-          </svg>
-          <div className="absolute right-[15%] top-[6%] font-hand text-4xl -rotate-6 text-ink/40">click me! →</div>
-          <div className="absolute left-[45%] bottom-[10%] font-hand text-5xl rotate-3 text-tangerine/40">✱</div>
-        </div>
+      {/* PHOTO GALLERY — digital scrapbook / corkboard */}
+      <section id="gallery" className="relative px-3 py-16 md:px-6">
+        <div className="corkboard relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border-[3px] border-ink px-5 py-16 shadow-brutal-lg md:px-12">
+          {/* stickers & doodles — margins only, behind photos */}
+          <div className="pointer-events-none absolute inset-0 select-none">
+            <span className="absolute left-[6%] top-[6%] font-hand text-4xl -rotate-12 text-ink/30">✈</span>
+            <span className="absolute right-[10%] top-[22%] font-hand text-3xl rotate-12 text-ink/30">★</span>
+            <span className="absolute left-[3%] top-[55%] font-hand text-3xl rotate-6 text-ink/25">✈</span>
+            <span className="absolute right-[5%] bottom-[12%] font-hand text-4xl -rotate-6 text-ink/25">★</span>
+          </div>
 
-        <div className="mb-14 max-w-3xl">
-          <p className="font-hand text-2xl text-tangerine">— reality check —</p>
-          <h2 className="mt-2 text-5xl md:text-6xl">
-            Peek Inside!{" "}
-            <span className="inline-block rotate-6">📸</span>
-            <span className="inline-block -rotate-6">👀</span>
-          </h2>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            No digital renders, no fake AI stock photos. Just the actual, real-life
-            pin-drop silence waiting for you.
-          </p>
-        </div>
+          <div className="pointer-events-none absolute right-4 top-6 z-10 flex flex-col items-end gap-3 md:right-10">
+            <div className="sticker pointer-events-auto rotate-6 rounded-full border-[2.5px] border-ink bg-mint px-4 py-2 font-display text-xs shadow-brutal-sm">
+              VIBE CHECK PASSED
+            </div>
+            <div className="sticker pointer-events-auto -rotate-3 inline-flex items-center gap-2 rounded-2xl border-[2.5px] border-ink bg-cream px-3 py-2 shadow-brutal-sm">
+              <Compass className="h-5 w-5 text-tangerine" />
+              <span className="font-hand text-xl">Exploration</span>
+            </div>
+          </div>
 
-        <div className="grid gap-10 md:grid-cols-2 lg:gap-14">
-          {GALLERY.map((p, i) => (
-            <figure
-              key={p.src}
-              className={`relative ${i % 2 === 0 ? "md:mt-0" : "md:mt-16"} ${p.rot} wobble-hover`}
-            >
-              {/* doodle behind frame */}
-              {i === 0 && <Coffee className="absolute -left-8 -top-6 h-10 w-10 -rotate-12 text-ink/50" />}
-              {i === 1 && <Pencil className="absolute -right-6 -top-6 h-10 w-10 rotate-45 text-tangerine/70" />}
-              {i === 2 && <Lightbulb className="absolute -left-8 -bottom-4 h-10 w-10 -rotate-12 text-butter" fill="currentColor" />}
-              {i === 3 && <Sparkles className="absolute -right-6 -top-6 h-10 w-10 rotate-12 text-tangerine" />}
+          <div className="pointer-events-none absolute bottom-8 left-4 z-10 flex items-end gap-4 md:left-10">
+            <div className="sticker pointer-events-auto -rotate-6 inline-flex items-center gap-2 rounded-2xl border-[2.5px] border-ink bg-lavender px-3 py-2 shadow-brutal-sm">
+              <BookOpen className="h-5 w-5" />
+              <Globe2 className="h-4 w-4" />
+              <span className="font-hand text-xl">study stack</span>
+            </div>
+            <div className="sticker pointer-events-auto rotate-6 inline-flex items-center gap-2 rounded-2xl border-[2.5px] border-ink bg-butter px-3 py-2 shadow-brutal-sm">
+              <Lightbulb className="h-5 w-5" fill="currentColor" />
+              <Cog className="h-4 w-4" />
+            </div>
+          </div>
 
-              <button
-                type="button"
-                onClick={() => setLightbox(p.src)}
-                className="polaroid group relative block w-full cursor-zoom-in bg-white"
-                aria-label="Open photo"
-              >
-                <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${i % 2 ? "rotate-[3deg]" : "-rotate-[4deg]"} ${p.tape}`} />
-                {/* Image is uncropped: object-contain + natural height */}
-                <img
-                  src={p.src}
-                  alt={p.caption}
-                  loading="lazy"
-                  className="block h-auto max-h-[520px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                />
-                <figcaption className="mt-3 text-center font-hand text-2xl leading-tight text-ink">
-                  {p.caption}
-                </figcaption>
-              </button>
-            </figure>
-          ))}
-        </div>
+          <div className="relative z-10 mb-14 max-w-3xl">
+            <p className="font-marker text-xl text-tangerine">— reality check —</p>
+            <h2 className="mt-3 text-5xl md:text-6xl">
+              Peek Inside!{" "}
+              <span className="inline-block rotate-6">📸</span>
+              <span className="inline-block -rotate-6">👀</span>
+            </h2>
+            <p className="mt-5 max-w-xl rounded-xl bg-cream/70 p-3 text-lg text-ink/80">
+              No digital renders, no fake AI stock photos. Just the actual, real-life
+              pin-drop silence waiting for you.
+            </p>
+            <p className="mt-3 font-marker text-lg text-ink/60">(Hover for vibe details) · (Click to zoom)</p>
+          </div>
 
-        <div className="mt-16 flex flex-col items-center gap-3 text-center">
-          <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot</p>
-          <a href="#damage" className="font-hand text-5xl animate-bounce">👇</a>
+          <div className="relative z-10 grid gap-16 md:grid-cols-2 lg:gap-20">
+            {GALLERY.map((p, i) => {
+              const clipboard = i % 2 === 1;
+              return (
+                <figure key={p.src} className={`relative ${i % 2 === 0 ? "" : "md:mt-16"} ${p.rot}`}>
+                  {clipboard ? (
+                    <div className="lift-hover relative">
+                      {/* wooden pencil */}
+                      <div className="pointer-events-none absolute -right-[86px] top-24 hidden rotate-[80deg] lg:block">
+                        <div className="h-2.5 w-40 rounded-l-sm bg-butter shadow-brutal-sm" />
+                        <div className="-mt-2.5 ml-40 h-0 w-0 border-y-[5px] border-l-[14px] border-y-transparent border-l-[oklch(0.75_0.09_66)]" />
+                      </div>
+                      <div className="clipboard-wood rounded-xl border-[3px] border-ink p-3 pt-9 shadow-brutal">
+                        {/* metallic clip */}
+                        <div className="absolute left-1/2 top-[-14px] h-9 w-24 -translate-x-1/2 rounded-md border-[2.5px] border-ink bg-gradient-to-b from-[oklch(0.92_0.01_250)] via-[oklch(0.72_0.01_250)] to-[oklch(0.86_0.01_250)] shadow-brutal-sm">
+                          <div className="mx-auto mt-2 h-3 w-10 rounded-sm border-2 border-ink/60 bg-[oklch(0.6_0.01_250)]" />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setLightbox(p.src)}
+                          className="group block w-full cursor-zoom-in rounded-md border-2 border-ink bg-white p-2"
+                          aria-label="Open photo"
+                        >
+                          <img
+                            src={p.src}
+                            alt={p.caption}
+                            loading="lazy"
+                            className="block h-auto w-full object-contain"
+                          />
+                        </button>
+                      </div>
+                      <figcaption className="mx-auto mt-5 w-fit max-w-sm -rotate-2 rounded-sm border-2 border-ink bg-butter px-4 py-3 text-center font-hand text-2xl leading-tight shadow-brutal-sm">
+                        {p.caption}
+                      </figcaption>
+                    </div>
+                  ) : (
+                    <div className="lift-hover relative">
+                      <div className="torn-paper border-ink p-5 pt-8 shadow-brutal">
+                        <button
+                          type="button"
+                          onClick={() => setLightbox(p.src)}
+                          className="group block w-full cursor-zoom-in border-2 border-ink bg-white p-2"
+                          aria-label="Open photo"
+                        >
+                          <img
+                            src={p.src}
+                            alt={p.caption}
+                            loading="lazy"
+                            className="block h-auto w-full object-contain"
+                          />
+                        </button>
+                      </div>
+                      {/* washi tape corners */}
+                      <span className="washi-dots absolute left-[-18px] top-[-10px] h-7 w-24 -rotate-45 border border-ink/20" />
+                      <span className="washi-stripes absolute right-[-18px] top-[-10px] h-7 w-24 rotate-45 border border-ink/20" />
+                      <span className="washi-plain absolute bottom-[-10px] left-6 h-6 w-24 -rotate-3 border border-ink/20" />
+                      <figcaption className="mx-auto mt-6 w-fit max-w-sm rotate-2 rounded-sm border-2 border-ink bg-mint px-4 py-3 text-center font-hand text-2xl leading-tight shadow-brutal-sm">
+                        {p.caption}
+                      </figcaption>
+                    </div>
+                  )}
+                </figure>
+              );
+            })}
+          </div>
+
+          <div className="relative z-10 mt-20 flex flex-col items-center gap-3 text-center">
+            <p className="font-marker text-2xl">Vibe check passed? Let's talk about your new spot</p>
+            <a href="#damage" className="text-5xl animate-bounce">👇</a>
+          </div>
         </div>
       </section>
+
 
 
       {/* THE DAMAGE */}
