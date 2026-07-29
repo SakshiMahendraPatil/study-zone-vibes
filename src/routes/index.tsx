@@ -257,7 +257,7 @@ function Index() {
                   {clipboard ? (
                     <div className="lift-hover relative">
                       {/* wooden pencil */}
-                      <div className="pointer-events-none absolute -right-6 top-10 hidden rotate-[75deg] lg:block">
+                      <div className="pointer-events-none absolute -right-[86px] top-24 hidden rotate-[80deg] lg:block">
                         <div className="h-2.5 w-40 rounded-l-sm bg-butter shadow-brutal-sm" />
                         <div className="-mt-2.5 ml-40 h-0 w-0 border-y-[5px] border-l-[14px] border-y-transparent border-l-[oklch(0.75_0.09_66)]" />
                       </div>
