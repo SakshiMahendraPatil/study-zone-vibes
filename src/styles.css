@@ -42,6 +42,7 @@
 
   --font-display: "Rubik Mono One", "Bagel Fat One", ui-sans-serif, system-ui;
   --font-hand: "Caveat", cursive;
+  --font-marker: "Permanent Marker", "Caveat", cursive;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-brutal: 6px 6px 0 0 var(--ink);
