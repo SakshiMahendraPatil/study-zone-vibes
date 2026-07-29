@@ -304,7 +304,7 @@ function Index() {
                       {/* washi tape corners */}
                       <span className="washi-dots absolute left-[-18px] top-[-10px] h-7 w-24 -rotate-45 border border-ink/20" />
                       <span className="washi-stripes absolute right-[-18px] top-[-10px] h-7 w-24 rotate-45 border border-ink/20" />
-                      <span className="washi-plain absolute bottom-[-8px] left-1/2 h-6 w-28 -translate-x-1/2 rotate-2 border border-ink/20" />
+                      <span className="washi-plain absolute bottom-[-10px] left-6 h-6 w-24 -rotate-3 border border-ink/20" />
                       <figcaption className="mx-auto mt-6 w-fit max-w-sm rotate-2 rounded-sm border-2 border-ink bg-mint px-4 py-3 text-center font-hand text-2xl leading-tight shadow-brutal-sm">
                         {p.caption}
                       </figcaption>
