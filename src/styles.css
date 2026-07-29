@@ -167,3 +167,62 @@
   animation: marquee 30s linear infinite;
 }
 
+
+/* ===== Corkboard / scrapbook gallery ===== */
+@utility corkboard {
+  background-color: oklch(0.78 0.07 70);
+  background-image:
+    radial-gradient(circle at 20% 30%, oklch(0.7 0.08 60 / 0.55) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 60%, oklch(0.68 0.09 55 / 0.5) 0 3px, transparent 4px),
+    radial-gradient(circle at 45% 80%, oklch(0.72 0.07 65 / 0.5) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 20%, oklch(0.66 0.08 58 / 0.45) 0 2.5px, transparent 4px),
+    radial-gradient(circle at 10% 75%, oklch(0.74 0.06 68 / 0.5) 0 2px, transparent 3px),
+    linear-gradient(140deg, oklch(0.82 0.06 74), oklch(0.74 0.08 62));
+  background-size: 90px 90px, 130px 130px, 70px 70px, 110px 110px, 150px 150px, 100% 100%;
+}
+
+@utility washi-dots {
+  background-color: oklch(0.75 0.11 195 / 0.9);
+  background-image: radial-gradient(oklch(1 0 0 / 0.85) 2px, transparent 2.5px);
+  background-size: 10px 10px;
+}
+@utility washi-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    oklch(0.74 0.18 45 / 0.92) 0 7px,
+    oklch(0.93 0.09 90 / 0.92) 7px 14px
+  );
+}
+@utility washi-plain {
+  background-color: oklch(0.85 0.1 300 / 0.85);
+}
+
+@utility torn-paper {
+  background: oklch(0.99 0.012 95);
+  --torn: polygon(0% 2%, 4% 0.4%, 9% 2.2%, 15% 0.6%, 22% 2.4%, 30% 0.8%, 38% 2.6%, 47% 0.7%, 56% 2.5%, 65% 0.9%, 74% 2.4%, 83% 0.8%, 92% 2.3%, 100% 1%, 99% 9%, 100% 20%, 98.6% 34%, 100% 48%, 98.8% 62%, 100% 76%, 99% 90%, 100% 99%, 92% 97.6%, 83% 99.4%, 74% 97.5%, 65% 99.2%, 56% 97.4%, 47% 99.3%, 38% 97.5%, 30% 99.2%, 22% 97.6%, 15% 99.4%, 9% 97.8%, 4% 99.6%, 0% 98%, 1.2% 88%, 0% 74%, 1.4% 60%, 0% 46%, 1.2% 32%, 0% 18%);
+  clip-path: var(--torn);
+}
+
+@utility clipboard-wood {
+  background-image:
+    repeating-linear-gradient(92deg, oklch(0.58 0.07 60 / 0.35) 0 2px, transparent 2px 9px),
+    repeating-linear-gradient(88deg, oklch(0.45 0.06 55 / 0.18) 0 1px, transparent 1px 17px),
+    linear-gradient(160deg, oklch(0.72 0.09 66), oklch(0.6 0.08 55));
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@utility sticker {
+  transition: transform 220ms ease;
+  &:hover { animation: wiggle 420ms ease-in-out 2; }
+}
+
+@utility lift-hover {
+  transition: transform 260ms cubic-bezier(.2,.8,.3,1), box-shadow 260ms ease;
+  &:hover {
+    transform: translateY(-10px) scale(1.025) rotate(0deg);
+    box-shadow: 16px 20px 0 0 oklch(0.32 0.05 55 / 0.45);
+  }
+}
