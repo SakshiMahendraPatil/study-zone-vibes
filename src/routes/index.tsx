@@ -11,9 +11,9 @@ const heroImg = heroAsset.url;
 const deskImg = deskAsset.url;
 
 const GALLERY = [
-  { src: g1.url, caption: "Your actual corner of paradise. Silence included, free of charge.", tape: "bg-tangerine/70", rot: "-rotate-2" },
+  { src: g2.url, caption: "Your actual corner of paradise. Silence included, free of charge.", tape: "bg-lavender", rot: "-rotate-2" },
   { src: g4.url, caption: "Your dedicated seat. Just waiting for your laptop and a mountain of notes.", tape: "bg-mint", rot: "rotate-2" },
-  { src: g2.url, caption: "Check that ambience! Bright enough to study, cozy enough to stay sane.", tape: "bg-lavender", rot: "-rotate-1" },
+  { src: g1.url, caption: "Check that ambience! Bright enough for study, cozy enough to stay sane.", tape: "bg-tangerine/70", rot: "-rotate-1" },
   { src: g3.url, caption: "The Wi-Fi router (glowing with pure, uninterrupted speed ⚡️).", tape: "bg-butter", rot: "rotate-1" },
 ];
 
