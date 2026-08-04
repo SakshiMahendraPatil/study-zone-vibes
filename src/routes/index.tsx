@@ -200,6 +200,13 @@ function Index() {
             </div>
           ))}
         </div>
+
+        <div className="mt-14 flex flex-col items-center gap-4 text-center">
+          <p className="font-hand text-2xl text-muted-foreground">Vibe check passed? Let's talk about your new spot.</p>
+          <a href="#damage" className="btn-brutal !bg-tangerine !text-ink rotate-1">
+            Show Me the Plans <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </section>
 
       {/* PHOTO GALLERY */}
