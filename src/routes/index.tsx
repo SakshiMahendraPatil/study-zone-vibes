@@ -141,12 +141,12 @@ function Index() {
             </div>
             <div className="polaroid absolute left-0 bottom-4 w-[55%] rotate-[-8deg] z-[-1]">
               <span className="tape-strip right-[-15px] top-8 rotate-[25deg]" />
-              <img src={studyRoom1} alt="Study room view 1" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
+              <img src={g2.url} alt="Study room view 1" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
               <p className="mt-3 text-center font-hand text-xl">study vibes 📚</p>
             </div>
             <div className="polaroid absolute right-4 top-20 w-[50%] rotate-[5deg] z-[-1]">
               <span className="tape-strip left-1/2 top-[-12px] -translate-x-1/2 rotate-[3deg]" />
-              <img src={studyRoom2} alt="Study room view 2" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
+              <img src={g4.url} alt="Study room view 2" width={500} height={500} loading="lazy" className="aspect-square h-auto w-full object-cover" />
               <p className="mt-3 text-center font-hand text-xl">focus mode 🔥</p>
             </div>
           </div>
