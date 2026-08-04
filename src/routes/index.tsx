@@ -263,9 +263,11 @@ function Index() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-center gap-3 text-center">
-          <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot</p>
-          <a href="#damage" className="font-hand text-5xl animate-bounce">👇</a>
+        <div className="mt-16 flex flex-col items-center gap-4 text-center">
+          <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot.</p>
+          <a href="#damage" className="btn-brutal !bg-tangerine !text-ink rotate-1">
+            Show Me the Plans <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
