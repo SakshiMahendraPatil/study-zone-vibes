@@ -569,3 +569,53 @@ function Index() {
     </div>
   );
 }
+
+function LeadForm() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sent, setSent] = useState(false);
+
+  return (
+    <form
+      className="mt-8"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+    >
+      <div className="grid gap-5 md:grid-cols-2">
+        <label className="block">
+          <span className="font-hand text-xl">Your Name</span>
+          <input
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="e.g. Rohan from Shahupuri"
+            className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+          />
+        </label>
+        <label className="block">
+          <span className="font-hand text-xl">Phone Number</span>
+          <input
+            required
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="10 digits, no drama"
+            className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+          />
+        </label>
+      </div>
+      <div className="mt-7 flex flex-wrap items-center gap-4">
+        <button type="submit" className="btn-brutal !bg-tangerine !text-cream text-base">
+          Text Me the Details 🚀
+        </button>
+        {sent && (
+          <span className="font-hand text-2xl text-ink">
+            Got it, {name.split(" ")[0] || "champ"}! We'll ping you soon 🎉
+          </span>
+        )}
+      </div>
+    </form>
+  );
+}
