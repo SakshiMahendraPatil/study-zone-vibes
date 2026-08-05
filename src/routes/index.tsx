@@ -98,7 +98,7 @@ function Index() {
               <span className="inline-block h-2 w-2 rounded-full bg-tangerine" />
               Kolhapur's quietest corner
             </span>
-            <h1 className="mt-5 text-5xl leading-[0.95] md:text-7xl">
+            <h1 className="mt-5 font-sans text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
               Stop Studying on Your{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">Bed.</span>
