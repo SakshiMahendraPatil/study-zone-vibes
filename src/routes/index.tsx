@@ -100,16 +100,15 @@ function Index() {
             </span>
             <h1
               className="mt-5 font-hero text-5xl leading-[1.05] tracking-[-0.02em] text-ink md:text-6xl"
-              style={{ textShadow: "4px 4px 0 var(--ink)" }}
+              style={{ textShadow: "3px 3px 0 var(--cream), 5px 5px 0 var(--butter)" }}
             >
-              <span className="text-cream" style={{ WebkitTextStroke: "2px var(--ink)" }}>
-                Stop Studying on Your{" "}
-              </span>
+              Stop Studying on Your{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-cream" style={{ WebkitTextStroke: "2px var(--ink)" }}>Bed.</span>
+                <span className="relative z-10">Bed.</span>
                 <span className="absolute inset-x-0 bottom-1 -z-0 h-4 -rotate-1 bg-tangerine/70" />
               </span>{" "}
-              <span className="relative inline-block -rotate-2 text-tangerine drop-shadow-[3px_3px_0_var(--ink)]">
+              It's{" "}
+              <span className="relative inline-block -rotate-2 text-tangerine">
                 Not Working.
               </span>
             </h1>
