@@ -513,7 +513,25 @@ function Index() {
         </div>
       </section>
 
+      {/* LEAD FORM */}
+      <section id="chat" className="relative mx-auto max-w-4xl px-5 pb-24">
+        <div className="card-brutal relative -rotate-1 overflow-hidden bg-butter p-8 md:p-12">
+          <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-lavender/70" />
+          <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[3deg]" />
+          <div className="relative">
+            <p className="font-hand text-2xl text-tangerine">— don't be shy —</p>
+            <h2 className="mt-2 text-4xl md:text-5xl">Claim Your Spot / Let's Chat 👋</h2>
+            <p className="mt-4 max-w-xl text-lg">
+              Interested but got questions? Drop your details below and we'll reach out to you
+              before your next exam.
+            </p>
+            <LeadForm />
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
+
       <footer className="border-t-[2.5px] border-ink bg-ink px-5 py-10 text-cream">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
