@@ -98,7 +98,7 @@ function Index() {
               <span className="inline-block h-2 w-2 rounded-full bg-tangerine" />
               Kolhapur's quietest corner
             </span>
-            <h1 className="mt-5 text-5xl leading-[0.95] md:text-7xl">
+            <h1 className="mt-5 font-sans text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
               Stop Studying on Your{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">Bed.</span>
@@ -288,20 +288,20 @@ function Index() {
         <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="font-hand text-2xl text-tangerine">— the damage —</p>
-            <h2 className="mt-2 text-5xl md:text-6xl">Two plans.<br/>Zero drama.</h2>
+            <h2 className="mt-2 text-5xl md:text-6xl">Three plans.<br/>Zero drama.</h2>
           </div>
           <p className="max-w-sm text-muted-foreground">No credit card gymnastics. No hidden charges.
             Just show up and study.</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid items-start gap-8 md:grid-cols-3">
           {/* Test Drive */}
-          <div className="card-brutal relative -rotate-1 p-8">
+          <div className="card-brutal relative -rotate-1 p-7">
             <span className="tape-strip left-8 top-[-14px] rotate-[-6deg]" />
             <p className="font-hand text-2xl">Plan #1</p>
-            <h3 className="mt-1 text-4xl">The Test Drive</h3>
-            <div className="mt-6 flex items-baseline gap-2">
-              <span className="text-6xl font-black">₹0</span>
+            <h3 className="mt-1 text-3xl">The Test Drive</h3>
+            <div className="mt-5 flex items-baseline gap-2">
+              <span className="text-5xl font-black">₹0</span>
               <span className="text-muted-foreground">/ first day</span>
             </div>
             <ul className="mt-6 space-y-3">
@@ -309,10 +309,9 @@ function Index() {
                 "Full access for 1 whole day (6 AM – 12 AM)",
                 "Experience the actual pin-drop silence",
                 "Test the blazing-fast Wi-Fi (no cap)",
-                "No card, no commitment, no catch",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-md border-[2px] border-ink bg-lavender">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[2px] border-ink bg-lavender">
                     <Check className="h-3.5 w-3.5" />
                   </span>
                   <span>{t}</span>
@@ -322,27 +321,53 @@ function Index() {
             <a href="tel:08262900150" className="btn-brutal mt-8 w-full !bg-cream">Claim Free Trial</a>
           </div>
 
+          {/* Rotational */}
+          <div className="card-brutal relative rotate-1 !bg-mint/60 p-7">
+            <span className="tape-strip left-8 top-[-14px] rotate-[5deg]" />
+            <p className="font-hand text-2xl">Plan #2</p>
+            <h3 className="mt-1 text-3xl">The Rotational Plan</h3>
+            <div className="mt-5 flex items-baseline gap-2">
+              <span className="text-5xl font-black">₹450</span>
+              <span className="text-ink/70">/ month</span>
+            </div>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Full month of access (6 AM – 12 AM)",
+                "Unlimited high-speed Wi-Fi",
+                "Grab any open seat for the day",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[2px] border-ink bg-butter">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="tel:08262900150" className="btn-brutal mt-8 w-full !bg-cream">Grab This Plan</a>
+          </div>
+
           {/* Permanent Spot */}
-          <div className="card-brutal relative rotate-1 !bg-ink p-8 text-cream shadow-brutal-lg">
-            <span className="absolute -top-4 right-6 -rotate-6 rounded-full border-[2.5px] border-ink bg-tangerine px-4 py-1 font-display text-sm text-ink shadow-brutal-sm">
+          <div className="card-brutal relative -rotate-1 border-[4px] !bg-ink p-7 text-cream shadow-brutal-lg">
+            <span className="absolute -top-4 right-5 -rotate-6 rounded-full border-[2.5px] border-ink bg-tangerine px-4 py-1 font-display text-sm text-ink shadow-brutal-sm">
               MOST POPULAR
             </span>
             <span className="tape-strip left-8 top-[-14px] rotate-[4deg]" />
-            <p className="font-hand text-2xl text-butter">Plan #2</p>
-            <h3 className="mt-1 text-4xl">Your Permanent Spot</h3>
-            <div className="mt-6 flex items-baseline gap-2">
-              <span className="text-6xl font-black">₹650</span>
+            <p className="font-hand text-2xl text-butter">Plan #3</p>
+            <h3 className="mt-1 text-3xl">Your Permanent Spot</h3>
+            <div className="mt-5 flex items-baseline gap-2">
+              <span className="text-5xl font-black">₹650</span>
               <span className="text-cream/70">/ month</span>
             </div>
             <ul className="mt-6 space-y-3">
               {[
-                "Your own dedicated, permanent seat",
+                "Dedicated permanent seat just for you",
                 "Full month of unlimited access",
-                "High-speed Wi-Fi (zero buffering tears)",
-                "Same spot every day — feels like home",
+                "Unlimited high-speed Wi-Fi",
+                "Pin-drop silence environment",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-md border-[2px] border-cream bg-tangerine">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-[2px] border-cream bg-tangerine">
                     <Check className="h-3.5 w-3.5 text-ink" />
                   </span>
                   <span>{t}</span>
@@ -354,7 +379,27 @@ function Index() {
             </a>
           </div>
         </div>
+
+        {/* VS callout */}
+        <div className="relative mt-12 flex justify-center">
+          <div className="card-brutal relative max-w-2xl -rotate-1 !bg-butter p-7">
+            <span className="absolute -left-5 -top-6 flex h-14 w-14 -rotate-12 items-center justify-center rounded-full border-[2.5px] border-ink bg-lavender font-display text-xl shadow-brutal-sm">
+              VS
+            </span>
+            <span className="tape-strip right-10 top-[-14px] rotate-[6deg]" />
+            <h4 className="text-2xl md:text-3xl">Rotational vs. Permanent: What's the difference?</h4>
+            <p className="mt-3 text-lg leading-snug">
+              With the ₹450 Rotational plan, you grab any open seat for the day. But for just
+              ₹200 more (₹650 total), the Permanent plan gives you a dedicated desk that is yours
+              and yours alone for the whole year. No hunting for spots!
+            </p>
+            <p className="mt-4 flex items-center gap-2 font-hand text-2xl text-tangerine">
+              worth it, honestly <ArrowRight className="h-5 w-5 -rotate-45" />
+            </p>
+          </div>
+        </div>
       </section>
+
 
       {/* REVIEWS */}
       <section id="reviews" className="relative mx-auto max-w-7xl px-5 py-24">
@@ -468,7 +513,25 @@ function Index() {
         </div>
       </section>
 
+      {/* LEAD FORM */}
+      <section id="chat" className="relative mx-auto max-w-4xl px-5 pb-24">
+        <div className="card-brutal relative -rotate-1 overflow-hidden bg-butter p-8 md:p-12">
+          <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-lavender/70" />
+          <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[3deg]" />
+          <div className="relative">
+            <p className="font-hand text-2xl text-tangerine">— don't be shy —</p>
+            <h2 className="mt-2 text-4xl md:text-5xl">Claim Your Spot / Let's Chat 👋</h2>
+            <p className="mt-4 max-w-xl text-lg">
+              Interested but got questions? Drop your details below and we'll reach out to you
+              before your next exam.
+            </p>
+            <LeadForm />
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
+
       <footer className="border-t-[2.5px] border-ink bg-ink px-5 py-10 text-cream">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
@@ -504,5 +567,55 @@ function Index() {
         </div>
       )}
     </div>
+  );
+}
+
+function LeadForm() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sent, setSent] = useState(false);
+
+  return (
+    <form
+      className="mt-8"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+    >
+      <div className="grid gap-5 md:grid-cols-2">
+        <label className="block">
+          <span className="font-hand text-xl">Your Name</span>
+          <input
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="e.g. Rohan from Shahupuri"
+            className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+          />
+        </label>
+        <label className="block">
+          <span className="font-hand text-xl">Phone Number</span>
+          <input
+            required
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="10 digits, no drama"
+            className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+          />
+        </label>
+      </div>
+      <div className="mt-7 flex flex-wrap items-center gap-4">
+        <button type="submit" className="btn-brutal !bg-tangerine !text-cream text-base">
+          Text Me the Details 🚀
+        </button>
+        {sent && (
+          <span className="font-hand text-2xl text-ink">
+            Got it, {name.split(" ")[0] || "champ"}! We'll ping you soon 🎉
+          </span>
+        )}
+      </div>
+    </form>
   );
 }
