@@ -99,8 +99,7 @@ function Index() {
               Kolhapur's quietest corner
             </span>
             <h1
-              className="mt-5 font-hero text-5xl leading-[1.05] tracking-[-0.02em] text-ink md:text-6xl"
-              style={{ textShadow: "3px 3px 0 var(--cream), 5px 5px 0 var(--butter)" }}
+              className="mt-5 font-hero text-5xl font-bold leading-[1.08] tracking-[-0.03em] text-ink md:text-6xl"
             >
               Stop Studying on Your{" "}
               <span className="relative inline-block">
@@ -108,7 +107,7 @@ function Index() {
                 <span className="absolute inset-x-0 bottom-1 -z-0 h-4 -rotate-1 bg-tangerine/70" />
               </span>{" "}
               It's{" "}
-              <span className="relative inline-block -rotate-2 text-tangerine">
+              <span className="relative inline-block text-tangerine">
                 Not Working.
               </span>
             </h1>
