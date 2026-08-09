@@ -89,9 +89,9 @@ function Index() {
               {NAV.map((l) => (
                 <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
               ))}
-              <a href="#chat" onClick={() => setOpen(false)} className="btn-sticker mt-3 w-full">
+              <button type="button" onClick={() => { setOpen(false); setContactOpen(true); }} className="btn-sticker mt-3 w-full">
                 Save My Seat <Rocket className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           </div>
         )}
