@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb } from "lucide-react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, Rocket } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
 import g1 from "@/assets/gallery-signage.jpeg.asset.json";
@@ -49,46 +49,60 @@ function Index() {
   }, [lightbox]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* decorative blobs */}
-      <div className="blob left-[-120px] top-[10%] h-[300px] w-[300px] bg-lavender/60" />
-      <div className="blob right-[-100px] top-[40%] h-[260px] w-[260px] bg-mint/60" style={{ animationDelay: "-4s" }} />
-      <div className="blob left-[20%] bottom-[10%] h-[220px] w-[220px] bg-butter/70" style={{ animationDelay: "-8s" }} />
-
-      {/* NAV */}
-      <header className="relative z-40 mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
-        <a href="#top" className="wobble-hover inline-flex -rotate-2 items-center gap-2 rounded-xl border-[2.5px] border-ink bg-butter px-3 py-1.5 shadow-brutal-sm">
-          <Sparkles className="h-4 w-4" />
-          <span className="font-display text-lg tracking-tight">EduVision Study Room</span>
-        </a>
-        <nav className="hidden items-center gap-7 md:flex">
-          {NAV.map((l) => (
-            <a key={l.href} href={l.href} className="relative font-medium hover:text-tangerine">
-              {l.label}
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* NAV — sticky top bar */}
+      <div className="sticky top-0 z-50 border-b-[2.5px] border-ink bg-background/95 backdrop-blur-sm">
+        <header className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+          <a href="#top" className="wobble-hover inline-flex -rotate-2 items-center gap-2 rounded-xl border-[2.5px] border-ink bg-butter px-3 py-1.5 shadow-brutal-sm">
+            <Sparkles className="h-4 w-4" />
+            <span className="font-display text-base tracking-tight md:text-lg">EduVision Study Room</span>
+          </a>
+          <nav className="hidden items-center gap-7 md:flex">
+            {NAV.map((l) => (
+              <a key={l.href} href={l.href} className="relative font-medium hover:text-tangerine">
+                {l.label}
+              </a>
+            ))}
+          </nav>
+          <a href="#chat" className="btn-sticker hidden md:inline-flex">
+            Save My Seat <Rocket className="h-4 w-4" />
+          </a>
+          <div className="flex items-center gap-2 md:hidden">
+            <a href="#chat" className="btn-sticker text-sm">
+              Save My Seat <Rocket className="h-4 w-4" />
             </a>
-          ))}
-        </nav>
-        <a href="#damage" className="btn-brutal hidden -rotate-1 md:inline-flex">
-          Save My Seat <ArrowRight className="h-4 w-4" />
-        </a>
-        <button
-          className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2 md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
-        >
-          <span className="block h-0.5 w-5 bg-ink" />
-          <span className="mt-1 block h-0.5 w-5 bg-ink" />
-          <span className="mt-1 block h-0.5 w-5 bg-ink" />
-        </button>
-      </header>
-      {open && (
-        <div className="relative z-40 mx-5 mb-4 card-brutal p-4 md:hidden">
-          {NAV.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
-          ))}
-          <a href="#damage" onClick={() => setOpen(false)} className="btn-brutal mt-2 w-full">Save My Seat</a>
-        </div>
-      )}
+            <button
+              className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Menu"
+            >
+              <span className="block h-0.5 w-5 bg-ink" />
+              <span className="mt-1 block h-0.5 w-5 bg-ink" />
+              <span className="mt-1 block h-0.5 w-5 bg-ink" />
+            </button>
+          </div>
+        </header>
+        {open && (
+          <div className="relative mx-auto max-w-7xl px-5 pb-4 md:hidden">
+            <div className="card-brutal p-4">
+              {NAV.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
+              ))}
+              <a href="#chat" onClick={() => setOpen(false)} className="btn-sticker mt-3 w-full">
+                Save My Seat <Rocket className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <main className="relative overflow-x-hidden">
+        {/* decorative blobs */}
+        <div className="blob left-[-120px] top-[10%] h-[300px] w-[300px] bg-lavender/60" />
+        <div className="blob right-[-100px] top-[40%] h-[260px] w-[260px] bg-mint/60" style={{ animationDelay: "-4s" }} />
+        <div className="blob left-[20%] bottom-[10%] h-[220px] w-[220px] bg-butter/70" style={{ animationDelay: "-8s" }} />
+
+
 
       {/* HERO */}
       <section id="top" className="relative mx-auto max-w-7xl px-5 pt-6 pb-24 md:pt-14">
@@ -530,7 +544,17 @@ function Index() {
         </div>
       </section>
 
+      {/* Mobile bottom CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-[2.5px] border-ink bg-background/95 p-3 backdrop-blur-sm md:hidden">
+        <div className="mx-auto flex max-w-7xl justify-center">
+          <a href="#chat" className="btn-sticker w-full">
+            Save My Seat 🚀
+          </a>
+        </div>
+      </div>
+
       {/* FOOTER */}
+
 
       <footer className="border-t-[2.5px] border-ink bg-ink px-5 py-10 text-cream">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
@@ -566,7 +590,13 @@ function Index() {
           />
         </div>
       )}
+
+      {/* Spacer for mobile bottom CTA */}
+      <div className="h-20 md:hidden" />
+      </main>
     </div>
+
+
   );
 }
 
