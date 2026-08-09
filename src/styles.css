@@ -82,6 +82,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -95,6 +99,7 @@
     line-height: 1;
   }
 }
+
 
 @utility btn-brutal {
   display: inline-flex;
