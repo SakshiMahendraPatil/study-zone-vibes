@@ -542,7 +542,17 @@ function Index() {
         </div>
       </section>
 
+      {/* Mobile bottom CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-[2.5px] border-ink bg-background/95 p-3 backdrop-blur-sm md:hidden">
+        <div className="mx-auto flex max-w-7xl justify-center">
+          <a href="#chat" className="btn-sticker w-full">
+            Save My Seat 🚀
+          </a>
+        </div>
+      </div>
+
       {/* FOOTER */}
+
 
       <footer className="border-t-[2.5px] border-ink bg-ink px-5 py-10 text-cream">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
