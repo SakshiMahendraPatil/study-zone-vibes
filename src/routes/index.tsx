@@ -51,7 +51,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       {/* NAV — sticky top bar */}
-      <div className="sticky top-0 z-50 border-b-[2.5px] border-ink bg-background/95 backdrop-blur-sm">
+      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
         <header className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#top" className="wobble-hover inline-flex -rotate-2 items-center gap-2 rounded-xl border-[2.5px] border-ink bg-butter px-3 py-1.5 shadow-brutal-sm">
             <Sparkles className="h-4 w-4" />
