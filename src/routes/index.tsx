@@ -37,6 +37,7 @@ const NAV = [
 
 function Index() {
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
 
   useEffect(() => {
@@ -64,13 +65,13 @@ function Index() {
               </a>
             ))}
           </nav>
-          <a href="#chat" className="btn-sticker hidden md:inline-flex">
+          <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker hidden md:inline-flex">
             Save My Seat <Rocket className="h-4 w-4" />
-          </a>
+          </button>
           <div className="flex items-center gap-2 md:hidden">
-            <a href="#chat" className="btn-sticker text-sm">
+            <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker text-sm">
               Save My Seat <Rocket className="h-4 w-4" />
-            </a>
+            </button>
             <button
               className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2"
               onClick={() => setOpen((v) => !v)}
@@ -88,9 +89,9 @@ function Index() {
               {NAV.map((l) => (
                 <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
               ))}
-              <a href="#chat" onClick={() => setOpen(false)} className="btn-sticker mt-3 w-full">
+              <button type="button" onClick={() => { setOpen(false); setContactOpen(true); }} className="btn-sticker mt-3 w-full">
                 Save My Seat <Rocket className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           </div>
         )}
@@ -544,14 +545,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Mobile bottom CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t-[2.5px] border-ink bg-background/95 p-3 backdrop-blur-sm md:hidden">
-        <div className="mx-auto flex max-w-7xl justify-center">
-          <a href="#chat" className="btn-sticker w-full">
-            Save My Seat 🚀
-          </a>
-        </div>
-      </div>
 
       {/* FOOTER */}
 
@@ -591,9 +584,9 @@ function Index() {
         </div>
       )}
 
-      {/* Spacer for mobile bottom CTA */}
-      <div className="h-20 md:hidden" />
       </main>
+
+      {contactOpen && <ContactModal onClose={() => setContactOpen(false)} />}
     </div>
 
 
@@ -647,5 +640,94 @@ function LeadForm() {
         )}
       </div>
     </form>
+  );
+}
+
+function ContactModal({ onClose }: { onClose: () => void }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!sent) return;
+    const t = setTimeout(onClose, 3000);
+    return () => clearTimeout(t);
+  }, [sent, onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[120] flex items-center justify-center bg-ink/50 p-4 backdrop-blur-md"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="card-brutal relative w-full max-w-lg -rotate-1 !bg-butter p-7 md:p-9 shadow-brutal-lg"
+      >
+        <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[4deg]" />
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute -right-3 -top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border-[2.5px] border-ink bg-tangerine text-cream shadow-brutal-sm transition-transform hover:rotate-12"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        {sent ? (
+          <div className="py-8 text-center">
+            <p className="font-hand text-3xl text-tangerine">woohoo!</p>
+            <h3 className="mt-3 text-3xl">Awesome! We've got your number. Talk to you soon! ✅</h3>
+          </div>
+        ) : (
+          <>
+            <h3 className="text-3xl md:text-4xl">Let's Get You a Desk! 🎒</h3>
+            <p className="mt-3 text-base leading-snug">
+              Drop your details below. The study room owner will WhatsApp or call you ASAP to lock
+              in your spot.
+            </p>
+            <form
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSent(true);
+              }}
+            >
+              <label className="block">
+                <span className="font-hand text-xl">Your Name</span>
+                <input
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Rohan from Shahupuri"
+                  className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+                />
+              </label>
+              <label className="block">
+                <span className="font-hand text-xl">Phone Number</span>
+                <input
+                  required
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="10 digits, no drama"
+                  className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+                />
+              </label>
+              <button type="submit" className="btn-sticker w-full text-base">
+                Send My Details 🚀
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
