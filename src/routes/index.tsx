@@ -37,6 +37,7 @@ const NAV = [
 
 function Index() {
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
 
   useEffect(() => {
