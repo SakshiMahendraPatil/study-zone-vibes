@@ -588,7 +588,11 @@ function Index() {
           />
         </div>
       )}
+
+      {/* Spacer for mobile bottom CTA */}
+      <div className="h-20 md:hidden" />
     </div>
+
   );
 }
 
