@@ -65,13 +65,13 @@ function Index() {
               </a>
             ))}
           </nav>
-          <a href="#chat" className="btn-sticker hidden md:inline-flex">
+          <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker hidden md:inline-flex">
             Save My Seat <Rocket className="h-4 w-4" />
-          </a>
+          </button>
           <div className="flex items-center gap-2 md:hidden">
-            <a href="#chat" className="btn-sticker text-sm">
+            <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker text-sm">
               Save My Seat <Rocket className="h-4 w-4" />
-            </a>
+            </button>
             <button
               className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2"
               onClick={() => setOpen((v) => !v)}
