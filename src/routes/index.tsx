@@ -49,12 +49,7 @@ function Index() {
   }, [lightbox]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-      {/* decorative blobs */}
-      <div className="blob left-[-120px] top-[10%] h-[300px] w-[300px] bg-lavender/60" />
-      <div className="blob right-[-100px] top-[40%] h-[260px] w-[260px] bg-mint/60" style={{ animationDelay: "-4s" }} />
-      <div className="blob left-[20%] bottom-[10%] h-[220px] w-[220px] bg-butter/70" style={{ animationDelay: "-8s" }} />
-
+    <div className="relative min-h-screen bg-background text-foreground">
       {/* NAV — sticky top bar */}
       <div className="sticky top-0 z-50 border-b-[2.5px] border-ink bg-background/95 backdrop-blur-sm">
         <header className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
@@ -100,6 +95,13 @@ function Index() {
           </div>
         )}
       </div>
+
+      <main className="relative overflow-x-hidden">
+        {/* decorative blobs */}
+        <div className="blob left-[-120px] top-[10%] h-[300px] w-[300px] bg-lavender/60" />
+        <div className="blob right-[-100px] top-[40%] h-[260px] w-[260px] bg-mint/60" style={{ animationDelay: "-4s" }} />
+        <div className="blob left-[20%] bottom-[10%] h-[220px] w-[220px] bg-butter/70" style={{ animationDelay: "-8s" }} />
+
 
 
       {/* HERO */}
