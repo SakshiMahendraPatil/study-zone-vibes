@@ -259,39 +259,65 @@ function Index() {
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2 lg:gap-14">
-          {GALLERY.map((p, i) => (
-            <figure
-              key={p.src}
-              className={`relative ${i % 2 === 0 ? "md:mt-0" : "md:mt-16"} ${p.rot} wobble-hover`}
-            >
-              {/* doodle behind frame */}
-              {i === 0 && <Coffee className="absolute -left-8 -top-6 h-10 w-10 -rotate-12 text-ink/50" />}
-              {i === 1 && <Pencil className="absolute -right-6 -top-6 h-10 w-10 rotate-45 text-tangerine/70" />}
-              {i === 2 && <Lightbulb className="absolute -left-8 -bottom-4 h-10 w-10 -rotate-12 text-butter" fill="currentColor" />}
-              {i === 3 && <Sparkles className="absolute -right-6 -top-6 h-10 w-10 rotate-12 text-tangerine" />}
+        <p className="mb-4 font-hand text-2xl -rotate-1 text-ink/70">Swipe to explore 👈👉</p>
 
-              <button
-                type="button"
-                onClick={() => setLightbox(p.src)}
-                className="polaroid group relative block w-full cursor-zoom-in bg-white"
-                aria-label="Open photo"
+        <div className="relative">
+          {/* desktop arrows */}
+          <button
+            type="button"
+            onClick={() => scrollGallery(-1)}
+            aria-label="Previous photo"
+            className="btn-sticker absolute left-[-10px] top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 !p-0 md:inline-flex"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollGallery(1)}
+            aria-label="Next photo"
+            className="btn-sticker absolute right-[-10px] top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 !p-0 md:inline-flex"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          <div
+            ref={galleryRef}
+            className="no-scrollbar flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-2 py-10 md:px-10"
+          >
+            {GALLERY.map((p, i) => (
+              <figure
+                key={p.src}
+                className={`relative w-[80vw] max-w-[420px] shrink-0 snap-center ${p.rot} wobble-hover`}
               >
-                <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${i % 2 ? "rotate-[3deg]" : "-rotate-[4deg]"} ${p.tape}`} />
-                {/* Image is uncropped: object-contain + natural height */}
-                <img
-                  src={p.src}
-                  alt={p.caption}
-                  loading="lazy"
-                  className="block h-auto max-h-[520px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                />
-                <figcaption className="mt-3 text-center font-hand text-2xl leading-tight text-ink">
-                  {p.caption}
-                </figcaption>
-              </button>
-            </figure>
-          ))}
+                {/* doodle behind frame */}
+                {i === 0 && <Coffee className="absolute -left-6 -top-6 h-10 w-10 -rotate-12 text-ink/50" />}
+                {i === 1 && <Pencil className="absolute -right-5 -top-6 h-10 w-10 rotate-45 text-tangerine/70" />}
+                {i === 2 && <Lightbulb className="absolute -left-6 -bottom-4 h-10 w-10 -rotate-12 text-butter" fill="currentColor" />}
+                {i === 3 && <Sparkles className="absolute -right-5 -top-6 h-10 w-10 rotate-12 text-tangerine" />}
+
+                <button
+                  type="button"
+                  onClick={() => setLightbox(p.src)}
+                  className="polaroid group relative block w-full cursor-zoom-in bg-white"
+                  aria-label="Open photo"
+                >
+                  <span className={`tape-strip left-1/2 top-[-14px] -translate-x-1/2 ${i % 2 ? "rotate-[3deg]" : "-rotate-[4deg]"} ${p.tape}`} />
+                  {/* Image is uncropped: object-contain + natural height */}
+                  <img
+                    src={p.src}
+                    alt={p.caption}
+                    loading="lazy"
+                    className="block h-auto max-h-[420px] w-full object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                  />
+                  <figcaption className="mt-3 text-center font-hand text-2xl leading-tight text-ink">
+                    {p.caption}
+                  </figcaption>
+                </button>
+              </figure>
+            ))}
+          </div>
         </div>
+
 
         <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <p className="font-hand text-2xl">Vibe check passed? Let's talk about your new spot.</p>
