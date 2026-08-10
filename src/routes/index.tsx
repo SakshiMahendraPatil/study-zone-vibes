@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, Rocket } from "lucide-react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, MessageCircle } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
 import g1 from "@/assets/gallery-signage.jpeg.asset.json";
@@ -66,11 +66,11 @@ function Index() {
             ))}
           </nav>
           <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker hidden md:inline-flex">
-            Save My Seat <Rocket className="h-4 w-4" />
+            Talk to Us <MessageCircle className="h-4 w-4" />
           </button>
           <div className="flex items-center gap-2 md:hidden">
             <button type="button" onClick={() => setContactOpen(true)} className="btn-sticker text-sm">
-              Save My Seat <Rocket className="h-4 w-4" />
+              Talk to Us <MessageCircle className="h-4 w-4" />
             </button>
             <button
               className="rounded-lg border-[2.5px] border-ink bg-card px-3 py-2"
@@ -90,7 +90,7 @@ function Index() {
                 <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold">{l.label}</a>
               ))}
               <button type="button" onClick={() => { setOpen(false); setContactOpen(true); }} className="btn-sticker mt-3 w-full">
-                Save My Seat <Rocket className="h-4 w-4" />
+                Talk to Us <MessageCircle className="h-4 w-4" />
               </button>
             </div>
           </div>
@@ -534,11 +534,11 @@ function Index() {
           <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-lavender/70" />
           <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[3deg]" />
           <div className="relative">
-            <p className="font-hand text-2xl text-tangerine">— don't be shy —</p>
-            <h2 className="mt-2 text-4xl md:text-5xl">Claim Your Spot / Let's Chat 👋</h2>
+            <p className="font-hand text-2xl text-tangerine">— low pressure, zero spam —</p>
+            <h2 className="mt-2 text-4xl md:text-5xl">Have Questions or Want a Quick Tour? 💬</h2>
             <p className="mt-4 max-w-xl text-lg">
-              Interested but got questions? Drop your details below and we'll reach out to you
-              before your next exam.
+              Wondering about timings, desk availability, or just want to pop in and check the vibe?
+              Drop your details below—the owner will text or call you directly with quick answers!
             </p>
             <LeadForm />
           </div>
@@ -613,29 +613,29 @@ function LeadForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. Rohan from Shahupuri"
+            placeholder="e.g. Rahul from Shahupuri"
             className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
           />
         </label>
         <label className="block">
-          <span className="font-hand text-xl">Phone Number</span>
+          <span className="font-hand text-xl">Phone / WhatsApp Number</span>
           <input
             required
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="10 digits, no drama"
+            placeholder="10 digits, no hassle"
             className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
           />
         </label>
       </div>
       <div className="mt-7 flex flex-wrap items-center gap-4">
         <button type="submit" className="btn-brutal !bg-tangerine !text-cream text-base">
-          Text Me the Details 🚀
+          Get Quick Answers ⚡
         </button>
         {sent && (
           <span className="font-hand text-2xl text-ink">
-            Got it, {name.split(" ")[0] || "champ"}! We'll ping you soon 🎉
+            Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕
           </span>
         )}
       </div>
@@ -684,14 +684,14 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         {sent ? (
           <div className="py-8 text-center">
             <p className="font-hand text-3xl text-tangerine">woohoo!</p>
-            <h3 className="mt-3 text-3xl">Awesome! We've got your number. Talk to you soon! ✅</h3>
+            <h3 className="mt-3 text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
           </div>
         ) : (
           <>
-            <h3 className="text-3xl md:text-4xl">Let's Get You a Desk! 🎒</h3>
+            <h3 className="text-3xl md:text-4xl">Have Questions or Want a Quick Tour? 💬</h3>
             <p className="mt-3 text-base leading-snug">
-              Drop your details below. The study room owner will WhatsApp or call you ASAP to lock
-              in your spot.
+              Wondering about timings, desk availability, or just want to pop in and check the vibe?
+              Drop your details below—the owner will text or call you directly with quick answers!
             </p>
             <form
               className="mt-6 space-y-4"
@@ -706,23 +706,23 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rohan from Shahupuri"
+                  placeholder="e.g. Rahul from Shahupuri"
                   className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
                 />
               </label>
               <label className="block">
-                <span className="font-hand text-xl">Phone Number</span>
+                <span className="font-hand text-xl">Phone / WhatsApp Number</span>
                 <input
                   required
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="10 digits, no drama"
+                  placeholder="10 digits, no hassle"
                   className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
                 />
               </label>
               <button type="submit" className="btn-sticker w-full text-base">
-                Send My Details 🚀
+                Get Quick Answers ⚡
               </button>
             </form>
           </>
