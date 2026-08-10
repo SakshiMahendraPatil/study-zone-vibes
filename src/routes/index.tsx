@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
 import g1 from "@/assets/gallery-signage.jpeg.asset.json";
@@ -39,6 +39,12 @@ function Index() {
   const [open, setOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const scrollGallery = (dir: number) => {
+    const el = galleryRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (!lightbox) return;
