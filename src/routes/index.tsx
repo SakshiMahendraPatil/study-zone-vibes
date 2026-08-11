@@ -734,34 +734,34 @@ function ContactModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-[120] flex items-center justify-center bg-ink/50 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-[120] flex items-center justify-center bg-navy/50 p-4 backdrop-blur-md"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="card-brutal relative w-full max-w-lg -rotate-1 !bg-butter p-7 md:p-9 shadow-brutal-lg"
+        className="font-inter relative w-full max-w-lg -rotate-1 rounded-2xl border-2 border-navy bg-white p-7 shadow-[8px_8px_0_0_var(--navy)] md:p-9"
       >
-        <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[4deg]" />
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute -right-3 -top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border-[2.5px] border-ink bg-tangerine text-cream shadow-brutal-sm transition-transform hover:rotate-12"
+          className="absolute -right-3 -top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-navy bg-teal text-white shadow-[3px_3px_0_0_var(--navy)] transition-transform hover:rotate-12"
         >
           <X className="h-5 w-5" />
         </button>
 
         {sent ? (
           <div className="py-8 text-center">
-            <p className="font-hand text-3xl text-tangerine">woohoo!</p>
-            <h3 className="mt-3 text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
+            <p className="text-sm font-semibold uppercase tracking-widest text-teal">woohoo!</p>
+            <h3 className="mt-3 text-2xl text-navy md:text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
           </div>
         ) : (
           <>
-            <h3 className="text-3xl md:text-4xl">Have Questions or Want a Quick Tour? 💬</h3>
-            <p className="mt-3 text-base leading-snug">
+            <p className="text-sm font-semibold uppercase tracking-widest text-teal">low pressure, zero spam</p>
+            <h3 className="mt-2 text-3xl text-navy md:text-4xl">Have Questions or Want a Quick Tour? 💬</h3>
+            <p className="mt-3 text-base leading-snug text-navy/80">
               Wondering about timings, desk availability, or just want to pop in and check the vibe?
               Drop your details below—the owner will text or call you directly with quick answers!
             </p>
@@ -773,27 +773,27 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               }}
             >
               <label className="block">
-                <span className="font-hand text-xl">Your Name</span>
+                <span className="text-sm font-semibold text-navy">Your Name</span>
                 <input
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Rahul from Shahupuri"
-                  className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+                  className="mt-2 w-full rounded-lg border-2 border-navy bg-white px-4 py-3 text-navy shadow-[3px_3px_0_0_var(--navy)] outline-none transition-all placeholder:text-navy/40 focus:-translate-y-0.5 focus:shadow-[5px_5px_0_0_var(--navy)]"
                 />
               </label>
               <label className="block">
-                <span className="font-hand text-xl">Phone / WhatsApp Number</span>
+                <span className="text-sm font-semibold text-navy">Phone / WhatsApp Number</span>
                 <input
                   required
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="10 digits, no hassle"
-                  className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
+                  className="mt-2 w-full rounded-lg border-2 border-navy bg-white px-4 py-3 text-navy shadow-[3px_3px_0_0_var(--navy)] outline-none transition-all placeholder:text-navy/40 focus:-translate-y-0.5 focus:shadow-[5px_5px_0_0_var(--navy)]"
                 />
               </label>
-              <button type="submit" className="btn-sticker w-full text-base">
+              <button type="submit" className="w-full inline-flex items-center justify-center gap-2 rounded-lg border-2 border-navy bg-teal px-6 py-3 font-semibold text-white shadow-[4px_4px_0_0_var(--navy)] transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--navy)] active:translate-y-0 active:shadow-[2px_2px_0_0_var(--navy)]">
                 Get Quick Answers ⚡
               </button>
             </form>
