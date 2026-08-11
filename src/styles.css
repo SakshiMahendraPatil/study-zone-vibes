@@ -39,10 +39,13 @@
   --color-tangerine: var(--tangerine);
   --color-mint: var(--mint);
   --color-tape: var(--tape);
+  --color-navy: var(--navy);
+  --color-teal: var(--teal);
 
   --font-display: "Rubik Mono One", "Bagel Fat One", ui-sans-serif, system-ui;
   --font-hand: "Caveat", cursive;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-brutal: 6px 6px 0 0 var(--ink);
   --shadow-brutal-lg: 10px 10px 0 0 var(--ink);
@@ -59,6 +62,8 @@
   --tangerine: oklch(0.72 0.19 45);
   --mint: oklch(0.86 0.09 165);
   --tape: oklch(0.82 0.14 90 / 0.75);
+  --navy: oklch(0.18 0.05 260);
+  --teal: oklch(0.62 0.14 185);
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -97,6 +102,22 @@
     font-family: var(--font-display);
     letter-spacing: -0.02em;
     line-height: 1;
+  }
+
+  .font-inter,
+  .font-inter h1,
+  .font-inter h2,
+  .font-inter h3,
+  .font-inter h4 {
+    font-family: var(--font-inter);
+  }
+
+  .font-inter h1,
+  .font-inter h2,
+  .font-inter h3,
+  .font-inter h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 }
 
