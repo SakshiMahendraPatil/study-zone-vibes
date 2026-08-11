@@ -760,7 +760,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         ) : (
           <>
             <p className="text-sm font-semibold uppercase tracking-widest text-teal">low pressure, zero spam</p>
-            <h3 className="font-inter mt-2 text-3xl font-bold tracking-tight text-navy md:text-4xl">Have Questions or Want a Quick Tour? 💬</h3>
+            <h3 className="font-inter mt-2 text-3xl font-semibold tracking-tight text-navy md:text-4xl">Have Questions or Want a Quick Tour? 💬</h3>
             <p className="mt-3 text-base leading-snug text-navy/80">
               Wondering about timings, desk availability, or just want to pop in and check the vibe?
               Drop your details below—the owner will text or call you directly with quick answers!
