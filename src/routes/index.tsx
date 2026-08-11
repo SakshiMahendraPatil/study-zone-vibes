@@ -755,7 +755,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         {sent ? (
           <div className="py-8 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-teal">woohoo!</p>
-            <h3 className="font-inter mt-3 text-2xl font-bold tracking-tight text-navy md:text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
+            <h3 className="font-inter mt-3 text-2xl font-semibold tracking-tight text-navy md:text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
           </div>
         ) : (
           <>
