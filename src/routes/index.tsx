@@ -560,7 +560,7 @@ function Index() {
             </div>
             <div>
               <div className="mb-2 inline-flex items-center gap-2 font-display text-sm">
-                <Phone className="h-4 w-4" /> RING US
+                <Phone className="h-4 w-4" /> RING US{' '}
               </div>
               <a href="tel:08262900150" className="text-2xl font-black hover:text-tangerine">
                 082629 00150
