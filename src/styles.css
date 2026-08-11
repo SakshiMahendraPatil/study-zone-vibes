@@ -104,8 +104,20 @@
     line-height: 1;
   }
 
-  .font-inter {
+  .font-inter,
+  .font-inter h1,
+  .font-inter h2,
+  .font-inter h3,
+  .font-inter h4 {
     font-family: var(--font-inter);
+  }
+
+  .font-inter h1,
+  .font-inter h2,
+  .font-inter h3,
+  .font-inter h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 }
 
