@@ -607,7 +607,7 @@ function Index() {
           <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-teal/10" />
           <div className="relative">
             <p className="text-sm font-semibold uppercase tracking-widest text-teal">low pressure, zero spam</p>
-            <h2 className="font-inter mt-2 text-4xl font-bold tracking-tight text-navy md:text-5xl">Have Questions or Want a Quick Tour? 💬</h2>
+            <h2 className="font-inter mt-2 text-4xl font-semibold tracking-tight text-navy md:text-5xl">Have Questions or Want a Quick Tour? 💬</h2>
             <p className="mt-4 max-w-xl text-lg text-navy/80">
               Wondering about timings, desk availability, or just want to pop in and check the vibe?
               Drop your details below—the owner will text or call you directly with quick answers!
