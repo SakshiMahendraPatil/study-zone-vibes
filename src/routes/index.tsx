@@ -546,7 +546,7 @@ function Index() {
                 <MapPin className="h-4 w-4" /> THE SPOT
               </div>
               <p className="text-lg leading-snug">
-                Address :- D MART - Tarabai garden road near opposite Hotel Maratha Regency, Mauli Apartment
+                Address :- D MART - Tarabai garden road near opposite Hotel Maratha Regency, Mauli Apartment , Near CBS
               </p>
             </div>
             <div>
