@@ -62,6 +62,8 @@
   --tangerine: oklch(0.72 0.19 45);
   --mint: oklch(0.86 0.09 165);
   --tape: oklch(0.82 0.14 90 / 0.75);
+  --navy: oklch(0.18 0.05 260);
+  --teal: oklch(0.62 0.14 185);
 
   --background: var(--cream);
   --foreground: var(--ink);
