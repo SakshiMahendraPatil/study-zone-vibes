@@ -546,8 +546,7 @@ function Index() {
                 <MapPin className="h-4 w-4" /> THE SPOT
               </div>
               <p className="text-lg leading-snug">
-                Mauli building basement, Maratha Regency, 284, near Tarabai Park Road,
-                opp. Hotel, New Shahupuri, Kolhapur, Maharashtra 416001.
+                Address:- D-MART - Tarabai garden road near opposite Hotel Maratha Regency, Mauli Apartment
               </p>
             </div>
             <div>
