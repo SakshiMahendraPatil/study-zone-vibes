@@ -185,7 +185,7 @@ function Index() {
           <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap font-display text-2xl">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-10">
-                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹650 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
+                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹600 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
                   <span key={j} className={j % 2 ? "text-tangerine" : ""}>{t}</span>
                 ))}
               </div>
@@ -408,7 +408,7 @@ function Index() {
             <p className="font-hand text-2xl text-butter">Plan #3</p>
             <h3 className="mt-1 text-3xl">Your Permanent Spot</h3>
             <div className="mt-5 flex items-baseline gap-2">
-              <span className="text-5xl font-black">₹650</span>
+              <span className="text-5xl font-black">₹600</span>
               <span className="text-cream/70">/ month</span>
             </div>
             <ul className="mt-6 space-y-3">
@@ -433,21 +433,58 @@ function Index() {
         </div>
 
         {/* VS callout */}
-        <div className="relative mt-12 flex justify-center">
-          <div className="card-brutal relative max-w-2xl -rotate-1 !bg-butter p-7">
-            <span className="absolute -left-5 -top-6 flex h-14 w-14 -rotate-12 items-center justify-center rounded-full border-[2.5px] border-ink bg-lavender font-display text-xl shadow-brutal-sm">
+        <div className="relative mt-16">
+          <div className="relative grid md:grid-cols-2">
+            {/* Dividers */}
+            <div className="absolute inset-y-0 left-1/2 hidden w-[2px] -translate-x-1/2 bg-ink md:block" />
+            <div className="absolute right-0 left-0 top-1/2 h-[2px] -translate-y-1/2 bg-ink md:hidden" />
+
+            {/* VS badge */}
+            <div className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[2.5px] border-ink bg-lavender font-display text-xl shadow-brutal-sm">
               VS
-            </span>
-            <span className="tape-strip right-10 top-[-14px] rotate-[6deg]" />
-            <h4 className="text-2xl md:text-3xl">Rotational vs. Permanent: What's the difference?</h4>
-            <p className="mt-3 text-lg leading-snug">
-              With the ₹450 Rotational plan, you grab any open seat for the day. But for just
-              ₹200 more (₹650 total), the Permanent plan gives you a dedicated desk that is yours
-              and yours alone for the whole year. No hunting for spots!
-            </p>
-            <p className="mt-4 flex items-center gap-2 font-hand text-2xl text-tangerine">
-              worth it, honestly <ArrowRight className="h-5 w-5 -rotate-45" />
-            </p>
+            </div>
+
+            {/* Rotational */}
+            <div className="px-6 py-10 md:px-10 md:pr-16">
+              <h4 className="text-3xl md:text-4xl">Rotational Plan</h4>
+              <p className="mt-1 font-hand text-2xl text-tangerine">₹450 / month</p>
+              <ul className="mt-6 space-y-4">
+                {[
+                  { emoji: "🪑", text: "Grab whatever seat is open" },
+                  { emoji: "🎒", text: "Pack up your stuff every day" },
+                  { emoji: "🏃‍♂️", text: "Gotta hunt for a spot during exams" },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-3 text-lg">
+                    <span className="text-xl">{item.emoji}</span>
+                    <span>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Permanent */}
+            <div className="px-6 py-10 md:px-10 md:pl-16">
+              <div className="relative inline-block">
+                <h4 className="relative z-10 text-3xl md:text-4xl">Permanent Plan</h4>
+                <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -rotate-1 bg-tangerine/70" />
+              </div>
+              <p className="mt-1 font-hand text-2xl text-tangerine">₹600 / month</p>
+              <ul className="mt-6 space-y-4">
+                {[
+                  { emoji: "👑", text: "Your own dedicated desk" },
+                  { emoji: "📚", text: "Leave your books & setup safely overnight" },
+                  { emoji: "🧘‍♂️", text: "Zero stress, just walk in and focus" },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-3 text-lg">
+                    <span className="text-xl">{item.emoji}</span>
+                    <span>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 font-hand text-2xl text-tangerine">
+                Worth it, honestly ↗
+              </p>
+            </div>
           </div>
         </div>
       </section>
