@@ -603,13 +603,12 @@ function Index() {
 
       {/* LEAD FORM */}
       <section id="chat" className="relative mx-auto max-w-4xl px-5 pb-24">
-        <div className="card-brutal relative -rotate-1 overflow-hidden bg-butter p-8 md:p-12">
-          <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-lavender/70" />
-          <span className="tape-strip left-1/2 top-[-14px] -ml-11 rotate-[3deg]" />
+        <div className="card-brutal relative -rotate-1 overflow-hidden bg-white p-8 shadow-[8px_8px_0_0_var(--navy)] md:p-12" style={{ borderColor: "var(--navy)", borderWidth: "2.5px" }}>
+          <div className="blob left-[-50px] bottom-[-40px] h-40 w-40 bg-teal/10" />
           <div className="relative">
-            <p className="font-hand text-2xl text-tangerine">— low pressure, zero spam —</p>
-            <h2 className="mt-2 text-4xl md:text-5xl">Have Questions or Want a Quick Tour? 💬</h2>
-            <p className="mt-4 max-w-xl text-lg">
+            <p className="text-sm font-semibold uppercase tracking-widest text-teal">low pressure, zero spam</p>
+            <h2 className="mt-2 text-4xl text-navy md:text-5xl">Have Questions or Want a Quick Tour? 💬</h2>
+            <p className="mt-4 max-w-xl text-lg text-navy/80">
               Wondering about timings, desk availability, or just want to pop in and check the vibe?
               Drop your details below—the owner will text or call you directly with quick answers!
             </p>
