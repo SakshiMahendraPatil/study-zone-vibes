@@ -185,7 +185,7 @@ function Index() {
           <div className="marquee-track flex shrink-0 items-center gap-10 whitespace-nowrap font-display text-2xl">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-10">
-                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹600 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
+                {["PIN-DROP SILENCE", "★", "FAST WI-FI", "★", "OPEN 6AM – 12AM", "★", "PERMANENT DESK", "★", "₹650 / MONTH", "★", "TARABAI PARK, KOLHAPUR", "★"].map((t, j) => (
                   <span key={j} className={j % 2 ? "text-tangerine" : ""}>{t}</span>
                 ))}
               </div>
@@ -408,7 +408,7 @@ function Index() {
             <p className="font-hand text-2xl text-butter">Plan #3</p>
             <h3 className="mt-1 text-3xl">Your Permanent Spot</h3>
             <div className="mt-5 flex items-baseline gap-2">
-              <span className="text-5xl font-black">₹600</span>
+              <span className="text-5xl font-black">₹650</span>
               <span className="text-cream/70">/ month</span>
             </div>
             <ul className="mt-6 space-y-3">
@@ -468,7 +468,7 @@ function Index() {
                 <h4 className="relative z-10 text-3xl md:text-4xl">Permanent Plan</h4>
                 <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -rotate-1 bg-tangerine/70" />
               </div>
-              <p className="mt-1 font-hand text-2xl text-tangerine">₹600 / month</p>
+              <p className="mt-1 font-hand text-2xl text-tangerine">₹650 / month</p>
               <ul className="mt-6 space-y-4">
                 {[
                   { emoji: "👑", text: "Your own dedicated desk" },
