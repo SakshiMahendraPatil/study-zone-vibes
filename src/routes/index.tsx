@@ -666,19 +666,49 @@ function Index() {
   );
 }
 
+async function submitToSheetDB(name: string, phone: string) {
+  const payload = {
+    data: [
+      {
+        Name: name,
+        Phone: phone,
+        Submitted_At: new Date().toLocaleString(),
+      },
+    ],
+  };
+
+  const res = await fetch("https://sheetdb.io/api/v1/8vo10vfpx80t4", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) throw new Error("Submission failed");
+}
+
 function LeadForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await submitToSheetDB(name, phone);
+      setName("");
+      setPhone("");
+      setStatus("success");
+    } catch {
+      setStatus("idle");
+    }
+  };
 
   return (
-    <form
-      className="mt-8"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
-    >
+    <form className="mt-8" onSubmit={handleSubmit}>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
           <span className="font-hand text-xl">Your Name</span>
@@ -703,12 +733,16 @@ function LeadForm() {
         </label>
       </div>
       <div className="mt-7 flex flex-wrap items-center gap-4">
-        <button type="submit" className="btn-brutal !bg-tangerine !text-cream text-base">
-          Get Quick Answers ⚡
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="btn-brutal !bg-tangerine !text-cream text-base disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === "loading" ? "Saving..." : "Get Quick Answers ⚡"}
         </button>
-        {sent && (
+        {status === "success" && (
           <span className="font-hand text-2xl text-ink">
-            Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕
+            Awesome! Your details are saved. The owner will contact you shortly! ✅
           </span>
         )}
       </div>
