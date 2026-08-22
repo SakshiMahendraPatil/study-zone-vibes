@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Phone, MapPin, Wifi, Volume2, Armchair, Sparkles, Star, Clock, ArrowRight, Check, X, Coffee, Pencil, Lightbulb, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import heroAsset from "@/assets/eduvision-hall.png.asset.json";
 import deskAsset from "@/assets/eduvision-desks.webp.asset.json";
@@ -666,19 +666,49 @@ function Index() {
   );
 }
 
+async function submitToSheetDB(name: string, phone: string) {
+  const payload = {
+    data: [
+      {
+        Name: name,
+        Phone: phone,
+        Submitted_At: new Date().toLocaleString(),
+      },
+    ],
+  };
+
+  const res = await fetch("https://sheetdb.io/api/v1/8vo10vfpx80t4", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) throw new Error("Submission failed");
+}
+
 function LeadForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await submitToSheetDB(name, phone);
+      setName("");
+      setPhone("");
+      setStatus("success");
+    } catch {
+      setStatus("idle");
+    }
+  };
 
   return (
-    <form
-      className="mt-8"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
-    >
+    <form className="mt-8" onSubmit={handleSubmit}>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
           <span className="font-hand text-xl">Your Name</span>
@@ -703,12 +733,16 @@ function LeadForm() {
         </label>
       </div>
       <div className="mt-7 flex flex-wrap items-center gap-4">
-        <button type="submit" className="btn-brutal !bg-tangerine !text-cream text-base">
-          Get Quick Answers ⚡
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="btn-brutal !bg-tangerine !text-cream text-base disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === "loading" ? "Saving..." : "Get Quick Answers ⚡"}
         </button>
-        {sent && (
+        {status === "success" && (
           <span className="font-hand text-2xl text-ink">
-            Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕
+            Awesome! Your details are saved. The owner will contact you shortly! ✅
           </span>
         )}
       </div>
@@ -719,7 +753,7 @@ function LeadForm() {
 function ContactModal({ onClose }: { onClose: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -728,10 +762,23 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   }, [onClose]);
 
   useEffect(() => {
-    if (!sent) return;
+    if (status !== "success") return;
     const t = setTimeout(onClose, 3000);
     return () => clearTimeout(t);
-  }, [sent, onClose]);
+  }, [status, onClose]);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await submitToSheetDB(name, phone);
+      setName("");
+      setPhone("");
+      setStatus("success");
+    } catch {
+      setStatus("idle");
+    }
+  };
 
   return (
     <div
@@ -754,10 +801,10 @@ function ContactModal({ onClose }: { onClose: () => void }) {
           <X className="h-5 w-5" />
         </button>
 
-        {sent ? (
+        {status === "success" ? (
           <div className="py-8 text-center">
             <p className="font-hand text-3xl text-tangerine">woohoo!</p>
-            <h3 className="mt-3 text-3xl">Thanks! The owner will drop you a message on WhatsApp shortly. See you soon! ☕</h3>
+            <h3 className="mt-3 text-3xl">Awesome! Your details are saved. The owner will contact you shortly! ✅</h3>
           </div>
         ) : (
           <>
@@ -766,13 +813,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               Wondering about timings, desk availability, or just want to pop in and check the vibe?
               Drop your details below—the owner will text or call you directly with quick answers!
             </p>
-            <form
-              className="mt-6 space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
+            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
               <label className="block">
                 <span className="font-hand text-xl">Your Name</span>
                 <input
@@ -794,8 +835,12 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   className="mt-1 w-full rounded-xl border-[2.5px] border-ink bg-card px-4 py-3 shadow-brutal-sm outline-none focus:-translate-y-0.5 focus:shadow-brutal"
                 />
               </label>
-              <button type="submit" className="btn-sticker w-full text-base">
-                Get Quick Answers ⚡
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="btn-sticker w-full text-base disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === "loading" ? "Saving..." : "Get Quick Answers ⚡"}
               </button>
             </form>
           </>
