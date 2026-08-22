@@ -677,6 +677,8 @@ async function submitToSheetDB(name: string, phone: string) {
     ],
   };
 
+  console.log(payload);
+
   const res = await fetch("https://sheetdb.io/api/v1/8vo10vfpx80t4", {
     method: "POST",
     headers: {
