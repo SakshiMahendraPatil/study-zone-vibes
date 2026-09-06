@@ -105,7 +105,7 @@ function LoginCard() {
         <button
           type="submit"
           disabled={busy}
-          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold disabled:opacity-60"
+          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold text-primary-foreground disabled:opacity-60"
         >
           {busy ? "Checking…" : "Let Me In"}
         </button>
@@ -145,6 +145,17 @@ function LeadsDashboard({ email }: { email: string }) {
     })().catch(() => setError("Could not connect to the database."));
     return () => unsub?.();
   }, []);
+
+  const deleteLead = async (id: string) => {
+    try {
+      const db = await getDb();
+      const { ref, remove } = await import("firebase/database");
+      await remove(ref(db, `leads/${id}`));
+      setLeads((prev) => (prev ?? []).filter((l) => l.id !== id));
+    } catch {
+      setError("Could not delete that enquiry. Try again.");
+    }
+  };
 
   const signOutNow = async () => {
     const auth = await getAuthClient();
@@ -222,6 +233,12 @@ function LeadsDashboard({ email }: { email: string }) {
                 >
                   WhatsApp
                 </a>
+                <button
+                  onClick={() => deleteLead(lead.id)}
+                  className="rounded-xl border-4 border-foreground bg-red-500 px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_hsl(var(--foreground))] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
