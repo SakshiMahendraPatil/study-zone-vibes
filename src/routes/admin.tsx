@@ -105,7 +105,7 @@ function LoginCard() {
         <button
           type="submit"
           disabled={busy}
-          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold disabled:opacity-60"
+          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold text-primary-foreground disabled:opacity-60"
         >
           {busy ? "Checking…" : "Let Me In"}
         </button>
