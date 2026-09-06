@@ -47,6 +47,10 @@ function Index() {
   };
 
   useEffect(() => {
+    setContactOpen(true);
+  }, []);
+
+  useEffect(() => {
     if (!lightbox) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setLightbox(null);
     document.addEventListener("keydown", onKey);
@@ -546,7 +550,7 @@ function Index() {
                 <MapPin className="h-4 w-4" /> THE SPOT
               </div>
               <p className="text-lg leading-snug">
-                Address :- D MART - Tarabai garden road near opposite Hotel Maratha Regency, Mauli Apartment
+                Address :- D MART - Tarabai garden road near opposite Hotel Maratha Regency, Mauli Apartment, near CBS
               </p>
             </div>
             <div>
@@ -763,11 +767,6 @@ function ContactModal({ onClose }: { onClose: () => void }) {
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  useEffect(() => {
-    if (status !== "success") return;
-    const t = setTimeout(onClose, 3000);
-    return () => clearTimeout(t);
-  }, [status, onClose]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
