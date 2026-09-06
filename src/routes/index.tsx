@@ -7,6 +7,8 @@ import g1 from "@/assets/gallery-signage.jpeg.asset.json";
 import g2 from "@/assets/gallery-wide.jpeg.asset.json";
 import g3 from "@/assets/gallery-fan.jpeg.asset.json";
 import g4 from "@/assets/gallery-cubicles.jpeg.asset.json";
+import { saveLead } from "@/lib/firebase";
+
 const heroImg = heroAsset.url;
 const deskImg = deskAsset.url;
 
@@ -683,6 +685,12 @@ async function submitToSheetDB(name: string, phone: string) {
 
   console.log(payload);
 
+  // Save to the Firebase Realtime Database (powers the /admin panel)
+  const dbSave = saveLead(name, phone).catch((err: unknown) => {
+    console.error("Realtime Database save failed", err);
+  });
+
+
   const res = await fetch("https://sheetdb.io/api/v1/7nw0hkvu20orl", {
     method: "POST",
     headers: {
@@ -692,8 +700,11 @@ async function submitToSheetDB(name: string, phone: string) {
     body: JSON.stringify(payload),
   });
 
+  await dbSave;
+
   if (!res.ok) throw new Error("Submission failed");
 }
+
 
 function LeadForm() {
   const [name, setName] = useState("");
