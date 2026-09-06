@@ -683,6 +683,11 @@ async function submitToSheetDB(name: string, phone: string) {
 
   console.log(payload);
 
+  // Save to the Firebase Realtime Database (powers the /admin panel)
+  const dbSave = saveLead(name, phone).catch((err) => {
+    console.error("Realtime Database save failed", err);
+  });
+
   const res = await fetch("https://sheetdb.io/api/v1/7nw0hkvu20orl", {
     method: "POST",
     headers: {
@@ -692,8 +697,11 @@ async function submitToSheetDB(name: string, phone: string) {
     body: JSON.stringify(payload),
   });
 
+  await dbSave;
+
   if (!res.ok) throw new Error("Submission failed");
 }
+
 
 function LeadForm() {
   const [name, setName] = useState("");
