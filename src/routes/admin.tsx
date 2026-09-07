@@ -66,10 +66,18 @@ function LoginCard() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main
+      className="flex min-h-screen items-center justify-center px-4"
+      style={{
+        backgroundColor: "var(--mint)",
+        backgroundImage:
+          "radial-gradient(color-mix(in oklab, var(--ink) 22%, transparent) 1.5px, transparent 1.6px)",
+        backgroundSize: "22px 22px",
+      }}
+    >
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-3xl border-4 border-foreground bg-card p-8 shadow-[8px_8px_0_0_hsl(var(--foreground))]"
+        className="w-full max-w-md rounded-3xl border-4 border-foreground bg-card p-8 shadow-[10px_10px_0_0_var(--ink)]"
       >
         <h1 className="font-display text-4xl leading-tight">Owner Login 🔐</h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -105,9 +113,9 @@ function LoginCard() {
         <button
           type="submit"
           disabled={busy}
-          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold text-primary-foreground disabled:opacity-60"
+          className="mt-6 w-full rounded-xl border-4 border-foreground bg-[#5b3df5] px-6 py-3 text-lg font-bold text-white shadow-[6px_6px_0_0_var(--ink)] transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_var(--ink)] active:translate-y-0.5 disabled:opacity-60"
         >
-          {busy ? "Checking…" : "Let Me In"}
+          {busy ? "Checking…" : "Log In 🚀"}
         </button>
       </form>
     </main>
