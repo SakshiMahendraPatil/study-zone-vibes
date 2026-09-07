@@ -182,8 +182,12 @@ function LeadsDashboard({ email }: { email: string }) {
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-4xl leading-tight md:text-5xl">Your Leads 📋</h1>
-            <p className="mt-1 text-sm text-muted-foreground">Signed in as {email}</p>
+            <h1 className="font-display text-4xl leading-tight md:text-5xl">
+              <span className="box-decoration-clone bg-[var(--butter)] px-2 py-1 -rotate-1 inline-block">
+                Lead Management 📋
+              </span>
+            </h1>
+            <p className="mt-3 text-sm text-muted-foreground">Signed in as {email}</p>
           </div>
           <button
             onClick={signOutNow}
