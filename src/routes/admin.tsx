@@ -66,10 +66,18 @@ function LoginCard() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main
+      className="flex min-h-screen items-center justify-center px-4"
+      style={{
+        backgroundColor: "var(--mint)",
+        backgroundImage:
+          "radial-gradient(color-mix(in oklab, var(--ink) 22%, transparent) 1.5px, transparent 1.6px)",
+        backgroundSize: "22px 22px",
+      }}
+    >
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-3xl border-4 border-foreground bg-card p-8 shadow-[8px_8px_0_0_hsl(var(--foreground))]"
+        className="w-full max-w-md rounded-3xl border-4 border-foreground bg-card p-8 shadow-[10px_10px_0_0_var(--ink)]"
       >
         <h1 className="font-display text-4xl leading-tight">Owner Login 🔐</h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -105,9 +113,9 @@ function LoginCard() {
         <button
           type="submit"
           disabled={busy}
-          className="btn-brutal mt-6 w-full rounded-xl border-4 border-foreground bg-primary px-6 py-3 text-lg font-bold text-primary-foreground disabled:opacity-60"
+          className="mt-6 w-full rounded-xl border-4 border-foreground bg-[#5b3df5] px-6 py-3 text-lg font-bold text-white shadow-[6px_6px_0_0_var(--ink)] transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_var(--ink)] active:translate-y-0.5 disabled:opacity-60"
         >
-          {busy ? "Checking…" : "Let Me In"}
+          {busy ? "Checking…" : "Log In 🚀"}
         </button>
       </form>
     </main>
@@ -174,8 +182,12 @@ function LeadsDashboard({ email }: { email: string }) {
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-4xl leading-tight md:text-5xl">Your Leads 📋</h1>
-            <p className="mt-1 text-sm text-muted-foreground">Signed in as {email}</p>
+            <h1 className="font-display text-4xl leading-tight md:text-5xl">
+              <span className="box-decoration-clone bg-[var(--butter)] px-2 py-1 -rotate-1 inline-block">
+                Lead Management 📋
+              </span>
+            </h1>
+            <p className="mt-3 text-sm text-muted-foreground">Signed in as {email}</p>
           </div>
           <button
             onClick={signOutNow}
@@ -212,13 +224,13 @@ function LeadsDashboard({ email }: { email: string }) {
           {filtered.map((lead) => (
             <div
               key={lead.id}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-4 border-foreground bg-card p-5 shadow-[6px_6px_0_0_hsl(var(--foreground))]"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-4 border-foreground bg-card p-5 shadow-[6px_6px_0_0_var(--ink)] transition-colors hover:bg-[var(--butter)]/40"
             >
               <div>
                 <p className="text-xl font-bold">{lead.name || "—"}</p>
                 <p className="text-sm text-muted-foreground">{lead.submittedAt}</p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-end gap-3">
                 <a
                   href={`tel:${lead.phone}`}
                   className="rounded-xl border-4 border-foreground bg-background px-3 py-2 font-bold"
@@ -229,13 +241,13 @@ function LeadsDashboard({ email }: { email: string }) {
                   href={`https://wa.me/91${lead.phone.replace(/\D/g, "").slice(-10)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border-4 border-foreground bg-primary px-3 py-2 font-bold"
+                  className="rounded-xl border-4 border-foreground bg-[#25D366] px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
                 >
-                  WhatsApp
+                  WhatsApp 💬
                 </a>
                 <button
                   onClick={() => deleteLead(lead.id)}
-                  className="rounded-xl border-4 border-foreground bg-red-500 px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_hsl(var(--foreground))] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
+                  className="rounded-xl border-4 border-foreground bg-red-500 px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
                 >
                   Delete
                 </button>
