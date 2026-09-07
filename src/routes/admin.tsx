@@ -224,13 +224,13 @@ function LeadsDashboard({ email }: { email: string }) {
           {filtered.map((lead) => (
             <div
               key={lead.id}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-4 border-foreground bg-card p-5 shadow-[6px_6px_0_0_hsl(var(--foreground))]"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border-4 border-foreground bg-card p-5 shadow-[6px_6px_0_0_var(--ink)] transition-colors hover:bg-[var(--butter)]/40"
             >
               <div>
                 <p className="text-xl font-bold">{lead.name || "—"}</p>
                 <p className="text-sm text-muted-foreground">{lead.submittedAt}</p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-end gap-3">
                 <a
                   href={`tel:${lead.phone}`}
                   className="rounded-xl border-4 border-foreground bg-background px-3 py-2 font-bold"
@@ -241,13 +241,13 @@ function LeadsDashboard({ email }: { email: string }) {
                   href={`https://wa.me/91${lead.phone.replace(/\D/g, "").slice(-10)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border-4 border-foreground bg-primary px-3 py-2 font-bold"
+                  className="rounded-xl border-4 border-foreground bg-[#25D366] px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
                 >
-                  WhatsApp
+                  WhatsApp 💬
                 </a>
                 <button
                   onClick={() => deleteLead(lead.id)}
-                  className="rounded-xl border-4 border-foreground bg-red-500 px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_hsl(var(--foreground))] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
+                  className="rounded-xl border-4 border-foreground bg-red-500 px-3 py-2 font-bold text-white shadow-[4px_4px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
                 >
                   Delete
                 </button>
